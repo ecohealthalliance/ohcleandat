@@ -7,7 +7,7 @@ Authors@R: c(
     person("Melinda", "Rostal", email = "rostal@ecohealthalliance.org", role = "aut", comment = c(ORCID = "0000-0002-6563-5280")),
     person("Johana", "Teigen", email = "teigen@ecohealthalliance.org", role = "aut", comment = c(ORCID = "0000-0002-6209-2321")),
     person("Dean", "Marchiori", email = "dean@wavedatalabs.com.au", role = "aut", comment = c(ORCID = "0000-0002-3430-7225")),
-    person("EcoHealth Alliance", role = c("cph", "fnd")))
+    person("EcoHealth Alliance", role = c("cph", "fnd"),comment = c(RORID = "https://ror.org/02zv3m156")))
 Maintainer: Collin Schwantes <schwantes@ecohealthalliance.org>
 Description: This package provides useful functions to orchestrate analytics and data cleaning pipelines for One Health projects.  
 License: What license is it under?
