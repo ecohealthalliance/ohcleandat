@@ -1,0 +1,12 @@
+utils::globalVariables(
+  c(
+  "comments",
+  "entry",
+  "field",
+  "is_valid",
+  "issue",
+  "new_val",
+  "old_value",
+  "user_initials"
+  )
+)
