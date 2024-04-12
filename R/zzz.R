@@ -7,6 +7,21 @@ utils::globalVariables(
   "issue",
   "new_val",
   "old_value",
-  "user_initials"
+  "user_initials",
+  "name",
+  "type",
+  "label_english_(en)",
+  "choices_english_(en)",
+  "choices",
+  "id",
+  "value",
+  "othertext_lookup",
+  "other_name",
+  "values",
+  "question",
+  "overwrite_old_value",
+  "odk_url",
+  "meta",
+  "description"
   )
 )

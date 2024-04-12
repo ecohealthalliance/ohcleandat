@@ -21,6 +21,11 @@ Suggests:
 VignetteBuilder: knitr
 Imports: 
     dplyr,
+    purrr,
+    readr,
     rlang,
+    stringr,
+    tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    validate
