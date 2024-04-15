@@ -4,6 +4,8 @@
 # ohcleandat
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/ecohealthalliance/ohcleandat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ecohealthalliance/ohcleandat/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This package provides useful functions to orchestrate analytics and data
