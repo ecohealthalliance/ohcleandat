@@ -13,7 +13,7 @@
 #'
 #' @param questionnaire The ODK questionnaire. Used to ensure the correct look up table is found.
 #'
-#' @return
+#' @return tibble
 #' @export
 #'
 othertext_lookup <- function(questionnaire = c("animal_owner")){

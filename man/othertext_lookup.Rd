@@ -9,6 +9,9 @@ othertext_lookup(questionnaire = c("animal_owner"))
 \arguments{
 \item{questionnaire}{The ODK questionnaire. Used to ensure the correct look up table is found.}
 }
+\value{
+tibble
+}
 \description{
 Provides a look up table matching ODK survey questions with their free text
 response question.
