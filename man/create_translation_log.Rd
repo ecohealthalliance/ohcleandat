@@ -9,7 +9,7 @@ create_translation_log(response_data, form_schema, url)
 \arguments{
 \item{response_data}{data.frame of ODK questionnaire responses}
 
-\item{form_schema}{data.frame od flattened ODK form schema}
+\item{form_schema}{data.frame or flattened ODK form schema}
 
 \item{url}{The ODK submission URL excluding the uuid identifier}
 }
@@ -18,6 +18,14 @@ data.frame validation log
 }
 \description{
 Collates free text responses from 'other' and 'notes' fields in the survey
-data. Some language detection is performed, and those records that are not
-detected as english are returned in a validation log for possible translation.
+data. Some language detection is performed and placed in the log notes section
+for possible translation.
+}
+\examples{
+\dontrun{
+create_translation_log(response_data = semi_clean_data,
+                       form_schema = odk_schema_data,
+                       url = "https://odk.eha.io/#/projects/5/forms/RVF2_animal_owner/submissions"))
+}
+
 }

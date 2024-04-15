@@ -22,6 +22,12 @@ utils::globalVariables(
   "overwrite_old_value",
   "odk_url",
   "meta",
-  "description"
+  "description",
+  "drive_resource",
+  "extension",
+  "log_response_id",
+  "n",
+  "rowid",
+  "set_diff"
   )
 )

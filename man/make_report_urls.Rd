@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_report_urls.R
 \name{make_report_urls}
 \alias{make_report_urls}
-\title{Make the urls for the reports}
+\title{Make the URLs for the reports}
 \usage{
 make_report_urls(aws_deploy_target, pattern = "")
 }
@@ -11,8 +11,13 @@ make_report_urls(aws_deploy_target, pattern = "")
 
 \item{pattern}{String. Regex pattern for matching file paths}
 }
+\value{
+character URL for report
+}
 \description{
-Make the urls for the reports
+Several HTML reports are emailed via an automated process. To do this a secure
+URL is to be generated as a download link. This function is to be used in an
+opinionated targets pipeline.
 }
 \author{
 Collin Schwantes

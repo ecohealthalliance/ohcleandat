@@ -15,14 +15,18 @@ remove_deletions(x, val = "Delete")
 logical vector
 }
 \description{
-To be used within dplyr::filter. The function returns a logical vector
-with TRUE resulting from values that are not equal to the `val` argument. Also
-protects from na values.
+Filters for records matching a given string.
 }
 \details{
-Used within verbs such as `all_of()` this can work effectively across all
+To be used within `dplyr::filter()`. The function returns a logical vector
+with TRUE resulting from values that are not equal to the `val` argument. Also
+protects from NA values.
+
+Used within verbs such as `tidyselect::all_of()` this can work effectively across all
 columns in a data frame. See examples
 }
 \examples{
+\dontrun{
 data |> filter(if_all(everything(), remove_deletions))
+}
 }

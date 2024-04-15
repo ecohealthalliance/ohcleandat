@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_dropbox_val_logs.R
 \name{get_dropbox_val_logs}
 \alias{get_dropbox_val_logs}
-\title{Get Dropbox validation logs}
+\title{Get Dropbox Validation Logs}
 \usage{
 get_dropbox_val_logs(
   file_name,
@@ -13,18 +13,24 @@ get_dropbox_val_logs(
 \arguments{
 \item{file_name}{character file name with extension of the validation log}
 
-\item{folder}{character the folder the log is saved in on drop box}
+\item{folder}{character the folder the log is saved in on drop box. Can be NULL if not in subfolder.}
 
 \item{path_name}{character the default drop box path}
 }
 \value{
-tibble  Validation Log
+tibble a Validation Log
 }
 \description{
-Downloads validation logs that are stored on dropbox
+Downloads existing validation logs that are stored on dropbox
 }
 \details{
-Ths function will check if the log exists and return NULL if not. Else it will
+This function will check if the log exists and return NULL if not. Else it will
 locally download the file to 'dropbox_validations' directory and read in to the
 session.
+}
+\examples{
+\dontrun{
+ get_dropbox_val_logs(file_name = "log_levellogger.csv", folder = NULL)
+}
+
 }

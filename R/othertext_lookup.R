@@ -1,7 +1,25 @@
+#' Look-up table for 'Other' questions
+#'
+#' @description
+#' Provides a look up table matching ODK survey questions with their free text
+#' response question.
+#'
+#' @details
+#' In many ODK surveys, a multiple choice question can have a response for 'other'
+#' where the respondent can add free text as a response. There is no consistent
+#' link in the response data to match the captured responses and the other free-text
+#' collected. This function provides a manual look up reference so free text responses
+#' can be compared to the original questions in the validation workflow.
+#'
+#' @param questionnaire The ODK questionnaire. Used to ensure the correct look up table is found.
+#'
+#' @return
+#' @export
+#'
 othertext_lookup <- function(questionnaire = c("animal_owner")){
-  
+
   if(questionnaire == "animal_owner"){
-    
+
     lookup <- tibble::tribble(
       ~name,                            ~other_name,
       "f2_species_own",                  "f2a_species_own_oexp",
@@ -27,9 +45,9 @@ othertext_lookup <- function(questionnaire = c("animal_owner")){
       "f19_sick_ani_self_treat",         "f19_sick_ani_self_treat_oexp"
     )
   }
-  
+
   return(lookup)
-  
+
 }
 
 

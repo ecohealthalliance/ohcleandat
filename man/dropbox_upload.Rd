@@ -7,13 +7,29 @@
 dropbox_upload(log, file_path, dropbox_path)
 }
 \arguments{
-\item{file}{path to local file for upload}
+\item{log}{Validation Log for OH cleaning pipelines}
 
-\item{path}{relative dropbox path}
+\item{file_path}{local file path for upload}
+
+\item{dropbox_path}{relative dropbox path}
 }
 \value{
 performs drop box upload
 }
 \description{
-Upload a local file to dropbox and handle authentication
+Upload a local file to dropbox and handle authentication.
+}
+\details{
+This is a wrapper of `rdrop2::drop_upload()` which first reads in a local
+CSV file and then uploads to a DropBox path.
+}
+\examples{
+\dontrun{
+    dropbox_upload(
+    kzn_animal_ship_semiclean,
+    file_path = here::here("outputs/kzn_animal_ship_semiclean.csv"),
+    dropbox_path = "DTRA_RVF2/Data/rvf2_github_data/semi_clean_data"
+    )
+}
+
 }

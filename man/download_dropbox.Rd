@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_dropbox.R
 \name{download_dropbox}
 \alias{download_dropbox}
-\title{Download Drop Box}
+\title{Download Drop Box Files}
 \usage{
 download_dropbox(dropbox_path, dropbox_filename, download_path, ...)
 }
@@ -20,4 +20,16 @@ returns file path if successful
 }
 \description{
 Downloads files from dropbox into a given directory
+}
+\examples{
+\dontrun{
+   download_dropbox(dropbox_path = "DTRA_RVF2/RVF Mosquito Datasets",
+   dropbox_filename = "Mosquito dataset as at 01-02-2024.xlsx",
+   download_path = here::here("data"),
+   overwrite = TRUE)
+}
+
+}
+\seealso{
+[rdrop2::drop_download()]
 }

@@ -13,18 +13,18 @@ download_googledrive_files(
 )
 }
 \arguments{
-\item{key_path}{character path to google authentication key}
+\item{key_path}{character path to Google authentication key}
 
-\item{drive_path}{character The google drive folder path}
+\item{drive_path}{character The Google drive folder path}
 
-\item{search_pattern}{character A search pattern for files in the google drive}
+\item{search_pattern}{character A search pattern for files in the Google drive}
 
 \item{MIME_type}{character Google Drive file type, file extension, or MIME type.}
 
 \item{out_path}{character The local file directory for files to be downloaded to}
 }
 \value{
-vector a character vector of files downloaded
+a character vector of files downloaded
 }
 \description{
 For a given Google Drive folder this function will find and download all files
@@ -32,5 +32,18 @@ matching a given pattern.
 }
 \details{
 Note: This relies on the `googledrive::drive_ls()` function which uses a search function
-and is not deterministic when recursively searching.
+and is not deterministic when recursively searching. Please pay attention to what is returned.
+}
+\examples{
+\dontrun{
+  download_googledrive_files(
+  drive_path = "https://drive.google.com/drive/u/0/folders/144cVfY4l087qeBz0Kkd31KAb5os9tw28",
+  search_pattern = "*.xlsx",
+  out_path = here::here("data/kzn_animal_ship/")
+  )
+}
+
+}
+\seealso{
+[googledrive::drive_ls()]
 }

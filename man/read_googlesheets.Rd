@@ -12,17 +12,26 @@ read_googlesheets(
 )
 }
 \arguments{
-\item{key_path}{character path to google authentication key}
+\item{key_path}{character path to Google authentication key json file}
 
 \item{sheet}{Sheet to read, in the sense of "worksheet" or "tab".}
 
 \item{ss}{Something that identifies a Google Sheet such as drive id or URL}
 
-\item{...}{other arguments passed to googlesheets4::range_read}
+\item{...}{other arguments passed to `googlesheets4::range_read()`}
 }
 \value{
 tibble
 }
 \description{
 For a given sheet id, this handles authentication and reads in a specified sheet, or all sheets.
+}
+\examples{
+\dontrun{
+read_googlesheets(ss = kzn_animal_ship_sheets, sheet = "all")
+}
+
+}
+\seealso{
+[googlesheets4::range_read()]
 }

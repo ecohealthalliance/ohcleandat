@@ -13,8 +13,15 @@ detect_language(text)
 character estimate for language abbreviation
 }
 \description{
-A function that extracts the top guess to the language of a piece of text.
+A function that extracts the top guess of the language of a piece of text.
 }
 \details{
-Utilizes the stringi package encoding detector as the means to infer languange.
+Utilizes the stringi package encoding detector as the means to infer language.
+}
+\examples{
+detect_language(text = "buongiorno")
+
+}
+\seealso{
+[stringi::stri_enc_detect()]
 }

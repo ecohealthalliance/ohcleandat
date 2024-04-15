@@ -7,7 +7,8 @@
 get_odk_form_schema(
   url,
   un = Sys.getenv("ODK_USERNAME"),
-  pw = Sys.getenv("ODK_PASSWORD")
+  pw = Sys.getenv("ODK_PASSWORD"),
+  odkc_version = Sys.getenv("ODKC_VERSION")
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ get_odk_form_schema(
 \item{un}{character The ODK account username}
 
 \item{pw}{character The ODK account password}
+
+\item{odkc_version}{character The ODKC Version string}
 }
 \value{
 data frame of survey responses
@@ -23,4 +26,20 @@ data frame of survey responses
 \description{
 This function handles the authentication and pulling of questionnaire
 form schema information.
+}
+\details{
+This is a wrapper around the `ruODK` package. It handles the setup and
+authentication. See \url{https://github.com/ropensci/ruODK}
+}
+\examples{
+\dontrun{
+    get_odk_form_schema(url ="https://odk.eha.io/v1/projects/5/forms/RVF2_animal_owner.svc",
+    un = Sys.getenv("ODK_USERNAME"),
+    pw = Sys.getenv("ODK_PASSWORD"),
+    odkc_version = Sys.getenv("ODKC_VERSION"))
+}
+
+}
+\seealso{
+[ruODK::form_schema_ext()]
 }

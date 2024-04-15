@@ -20,12 +20,25 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 Imports: 
+    arsenal,
+    containerTemplateUtils (>= 0.0.0.9006),
     dplyr,
+    googledrive,
+    googlesheets4,
+    here,
     purrr,
+    rdrop2 (>= 0.8.2.2),
     readr,
+    readxl,
     rlang,
+    ruODK (>= 1.4.9.9002),
+    stringi,
     stringr,
     tibble,
     tidyr,
     tidyselect,
     validate
+Remotes:  
+    ecohealthalliance/containerTemplateUtils,
+    fcampelo/rdrop2,
+    ropensci/ruODK

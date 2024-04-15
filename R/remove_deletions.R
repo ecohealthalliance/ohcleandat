@@ -1,10 +1,14 @@
 #' Utility function to identify records for deletion
-#' 
-#' To be used within dplyr::filter. The function returns a logical vector
+#'
+#' @description
+#' Filters for records matching a given string.
+#'
+#' @details
+#' To be used within `dplyr::filter()`. The function returns a logical vector
 #' with TRUE resulting from values that are not equal to the `val` argument. Also
-#' protects from na values.  
-#' 
-#' Used within verbs such as `all_of()` this can work effectively across all
+#' protects from NA values.
+#'
+#' Used within verbs such as `tidyselect::all_of()` this can work effectively across all
 #' columns in a data frame. See examples
 #'
 #' @param x input vector
@@ -12,7 +16,10 @@
 #'
 #' @return logical vector
 #'
-#' @examples data |> filter(if_all(everything(), remove_deletions))
+#' @examples
+#' \dontrun{
+#' data |> filter(if_all(everything(), remove_deletions))
+#' }
 remove_deletions <- function(x, val = "Delete"){
   x != val | is.na(x)
 }
