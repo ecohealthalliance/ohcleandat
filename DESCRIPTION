@@ -38,7 +38,7 @@ Imports:
     tidyr,
     tidyselect,
     validate
-Remotes:  
+Remotes: 
     ecohealthalliance/containerTemplateUtils,
     fcampelo/rdrop2,
     ropensci/ruODK
