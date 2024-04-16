@@ -4,12 +4,7 @@
 \alias{read_googlesheets}
 \title{Read Google Sheets Data}
 \usage{
-read_googlesheets(
-  key_path = here::here("./auth/rvf2-workflow-automation-2877f538ddb9.json"),
-  sheet = "all",
-  ss,
-  ...
-)
+read_googlesheets(key_path, sheet = "all", ss, ...)
 }
 \arguments{
 \item{key_path}{character path to Google authentication key json file}

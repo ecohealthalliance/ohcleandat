@@ -34,7 +34,7 @@ authentication. See \url{https://github.com/ropensci/ruODK}
 }
 \examples{
 \dontrun{
-    get_odk_responses(url ="https://odk.eha.io/v1/projects/5/forms/RVF2_animal_owner.svc",
+    get_odk_responses(url ="https://odk.xyz.io/v1/projects/5/forms/survey.svc",
     un = Sys.getenv("ODK_USERNAME"),
     pw = Sys.getenv("ODK_PASSWORD"),
     odkc_version = Sys.getenv("ODKC_VERSION"))

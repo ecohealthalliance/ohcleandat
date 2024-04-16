@@ -4,11 +4,7 @@
 \alias{get_dropbox_val_logs}
 \title{Get Dropbox Validation Logs}
 \usage{
-get_dropbox_val_logs(
-  file_name,
-  folder,
-  path_name = "DTRA_RVF2/Data/rvf2_github_data/validation_logs"
-)
+get_dropbox_val_logs(file_name, folder, path_name)
 }
 \arguments{
 \item{file_name}{character file name with extension of the validation log}
@@ -30,7 +26,7 @@ session.
 }
 \examples{
 \dontrun{
- get_dropbox_val_logs(file_name = "log_levellogger.csv", folder = NULL)
+ get_dropbox_val_logs(file_name = "log.csv", folder = NULL)
 }
 
 }
