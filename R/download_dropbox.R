@@ -12,8 +12,8 @@
 #' @seealso [rdrop2::drop_download()]
 #' @examples
 #' \dontrun{
-#'    download_dropbox(dropbox_path = "DTRA_RVF2/RVF Mosquito Datasets",
-#'    dropbox_filename = "Mosquito dataset as at 01-02-2024.xlsx",
+#'    download_dropbox(dropbox_path = "XYZ/Project-Datasets",
+#'    dropbox_filename = "Project dataset as at 01-02-2024.xlsx",
 #'    download_path = here::here("data"),
 #'    overwrite = TRUE)
 #' }
@@ -23,8 +23,6 @@ download_dropbox <-
            dropbox_filename,
            download_path,
            ...) {
-    # locate and update token
-    refresh_db_token()
 
     # check if exists
     if (!rdrop2::drop_exists(paste(dropbox_path, dropbox_filename, sep = "/"))) {
