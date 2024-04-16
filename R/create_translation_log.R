@@ -16,7 +16,7 @@
 #' \dontrun{
 #' create_translation_log(response_data = semi_clean_data,
 #'                        form_schema = odk_schema_data,
-#'                        url = "https://odk.eha.io/#/projects/5/forms/RVF2_animal_owner/submissions"))
+#'                        url = "https://odk.xyz.io/#/projects/project-name/submissions"))
 #' }
 #'
 create_translation_log <-

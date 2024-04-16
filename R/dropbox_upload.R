@@ -16,16 +16,13 @@
 #' \dontrun{
 #'     dropbox_upload(
 #'     kzn_animal_ship_semiclean,
-#'     file_path = here::here("outputs/kzn_animal_ship_semiclean.csv"),
-#'     dropbox_path = "DTRA_RVF2/Data/rvf2_github_data/semi_clean_data"
+#'     file_path = here::here("outputs/data.csv"),
+#'     dropbox_path = "XYZ/Data/semi_clean_data"
 #'     )
 #' }
 #'
 dropbox_upload <- function(log, file_path, dropbox_path) {
   log_export <- readr::write_csv(log, file_path)
-
-  # upload token
-  refresh_db_token()
 
   # upload
   rdrop2::drop_upload(file_path, dropbox_path)

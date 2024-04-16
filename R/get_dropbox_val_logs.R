@@ -14,12 +14,11 @@
 #' @export
 #' @examples
 #' \dontrun{
-#'  get_dropbox_val_logs(file_name = "log_levellogger.csv", folder = NULL)
+#'  get_dropbox_val_logs(file_name = "log.csv", folder = NULL)
 #' }
 #'
 get_dropbox_val_logs <-
-  function(file_name, folder, path_name = "DTRA_RVF2/Data/rvf2_github_data/validation_logs") {
-    refresh_db_token()
+  function(file_name, folder, path_name) {
 
     # path handling when log isnt in a dedicated subfolder on drop box
     if (is.null(folder)) {
