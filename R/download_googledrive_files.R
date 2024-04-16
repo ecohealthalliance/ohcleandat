@@ -18,14 +18,15 @@
 #' @examples
 #' \dontrun{
 #'   download_googledrive_files(
-#'   drive_path = "https://drive.google.com/drive/u/0/folders/144cVfY4l087qeBz0Kkd31KAb5os9tw28",
+#'   key_path = here::here("./key.json"),
+#'   drive_path = "https://drive.google.com/drive/u/0/folders/asdjfnasiffas8ef7y7y89rf",
 #'   search_pattern = "*.xlsx",
-#'   out_path = here::here("data/kzn_animal_ship/")
+#'   out_path = here::here("data/project_data/")
 #'   )
 #' }
 #'
 download_googledrive_files <-
-  function(key_path = here::here("./auth/rvf2-workflow-automation-2877f538ddb9.json"),
+  function(key_path,
            drive_path,
            search_pattern,
            MIME_type = NULL,

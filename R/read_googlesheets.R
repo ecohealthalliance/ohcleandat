@@ -16,7 +16,7 @@
 #' }
 #'
 read_googlesheets <-
-  function(key_path = here::here("./auth/rvf2-workflow-automation-2877f538ddb9.json"),
+  function(key_path,
            sheet = "all",
            ss,
            ...) {
