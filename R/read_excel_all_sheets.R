@@ -7,6 +7,7 @@
 #' @param file character File path to an excel file
 #'
 #' @return list
+#' @export
 read_excel_all_sheets <- function(file){
   sheets <- readxl::excel_sheets(file)
   purrr::map(sheets, ~readxl::read_excel(file, sheet = .x))
