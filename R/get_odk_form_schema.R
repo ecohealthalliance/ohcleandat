@@ -35,11 +35,11 @@ get_odk_form_schema <-
       un = un,
       pw = pw,
       tz = "UTC",
-      odkc_version
+      odkc_version = odkc_version
     )
 
     # get form schema
-    schema <- ruODK::form_schema_ext(odkc_version)
+    schema <- ruODK::form_schema_ext(odkc_version = odkc_version)
 
     schema$name <- tolower(schema$name)
 

@@ -35,12 +35,12 @@ get_odk_responses <-
       un = un,
       pw = pw,
       tz = "UTC",
-      odkc_version
+      odkc_version = odkc_version
     )
 
     # get responses
     responses <-
-      ruODK::odata_submission_get(odkc_version, parse = F, wkt = TRUE) |>
+      ruODK::odata_submission_get(odkc_version = odkc_version, parse = F, wkt = TRUE) |>
       ruODK::odata_submission_rectangle(names_sep = NULL)
 
     return(responses)

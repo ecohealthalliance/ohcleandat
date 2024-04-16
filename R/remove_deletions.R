@@ -15,6 +15,7 @@
 #' @param val The value to check for inequality. Defaults to 'Delete'
 #'
 #' @return logical vector
+#' @export
 #'
 #' @examples
 #' \dontrun{
