@@ -20,3 +20,12 @@ You can install the development version of ohcleandat from
 # install.packages("devtools")
 devtools::install_github("ecohealthalliance/ohcleandat")
 ```
+
+## Getting Started
+
+For help guides, check out the package vignettes.
+
+## Getting Help
+
+If you encounter a clear bug, please file a minimal reproducible example
+on [github](https://github.com/ecohealthalliance/ohcleandat/issues).
