@@ -11,10 +11,17 @@
 #' collected. This function provides a manual look up reference so free text responses
 #' can be compared to the original questions in the validation workflow.
 #'
+#' This function can be expanded by providing a tibble with two columns: `name` and
+#' `other_name` which maps the question name in ODK to the question name containing
+#' 'other' or 'free text'.
+#'
 #' @param questionnaire The ODK questionnaire. Used to ensure the correct look up table is found.
 #'
 #' @return tibble
 #' @export
+#' @examples
+#' othertext_lookup(questionnaire = c("animal_owner"))
+#'
 #'
 othertext_lookup <- function(questionnaire = c("animal_owner")){
 
