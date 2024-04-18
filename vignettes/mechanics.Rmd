@@ -40,7 +40,9 @@ Once these rules have been defined, they are 'confronted' with the data. Those r
 
 ### Integrating corrections
 
-The final step involves correcting the data and converting it into a 'semi-clean' data set. This involves reading in the validation log, scanning for any changes that are indicated, and then correcting the existing values with the newly supplied values.   
+The final step involves correcting the data and converting it into a 'semi-clean' data set. This involves reading in the validation log, scanning for any changes that are indicated, and then correcting the existing values with the newly supplied values.     
+
+To ensure corrections are applied as expected, a function `validation_checks()` is provided to compare the before and after data, along with the validation logs. This function will error if the checks are not satisfied and the output when successful is the summary output from `arsenal::comparedf()`. 
 
 A conceptual overview of this process is outlined below.  
 
@@ -49,6 +51,10 @@ A conceptual overview of this process is outlined below.
 ## Targets Implementation 
 
 ### Pipeline  
+
+The below code sample demonstrates a typical end to end validation pipeline. While
+the data pre-processing steps for any given project may vary, much of this code can be re-used as a template for
+future pipelines. 
 
 ```{r, eval=FALSE}
 fs_mosquito_field_targets <- tar_plan(
@@ -286,6 +292,17 @@ fs_mosquito_field_targets <- tar_plan(
 A directed acyclic graph of a {targets} pipeline is shown below for a real example. 
 
 ![](img/targets.png)
+
+### Revised pipeline  
+
+In actual fact, after reading through the targets pipeline, a refinement is required to our flow chart to reflect how
+the pipeline works beyond its initial creation. 
+
+To ensure validation log corrections are applied correctly, any existing validation log is read in first. The
+raw data are then corrected and the validation log is re-run on the 'semi-clean' data so as to only flag new violations
+that were not already reviewed and corrected. Any new violation are appended to the existing log and uploaded to Dropbox. 
+
+![](img/pipeline2.png)
 
 ## Complex Cases  
 

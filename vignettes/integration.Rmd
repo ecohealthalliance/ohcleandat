@@ -40,7 +40,11 @@ Also below is the relevant target that performs the joining operation and integr
   )
 ```
 
-It is critical that data validation steps are correctly performed to ensure the integration of multiple data sets is successful. In the case where there are missing, malformed or duplicate primary key, the expectations around the relationship type will not hold up.
+It is critical that data validation steps are correctly performed to ensure the integration of multiple data sets is successful. In the case where there are missing, malformed or duplicate primary key, the expectations around the relationship type will not hold up.  
+
+An overview of this integration process is below.  
+
+![](img/integration.png)
 
 ## Types of Data
 
@@ -56,7 +60,11 @@ Throughout the data cleaning pipeline, we take in raw data and convert it to som
 
 Over the course of a long data collection exercise, standards and formats can diverge. This makes the data cleaning steps difficult and will slow down the ability to integrate data as above. Some general strategies can help to mitigate these risks:
 
--   Design and enforce a Primary Key or Unique Identifier for each data set that will be meaningful and immutable.
--   Think about storing data in a 'tidy' format where possible. See here: <https://www.jstatsoft.org/article/view/v059i10>\
--   Store raw data in a machine readable format (i.e. CSV)
--   Set some metadata standards at the start of the project around columns and data types. It is understandable that these might change over time, but having these standards will help plan how to best accommodate changes without breaking existing work.
+- Ensure that data formatting to a standard where each row uniquely identifies a record and have a unique identifier without duplicates or missing values. 
+- Ensure all data are stored as a data.frame or tibble.  
+- In R, ensure that each column has a correct and unique column type. (i.e. character, numeric and *not* list)  
+- Each column name should be unique and formatted consistently to avoid spaces and special characters in column names. Hint: Use `janitor::clean_names()`. 
+- Design and enforce a Primary Key or Unique Identifier for each data set that will be meaningful and immutable.
+- Think about storing data in a 'tidy' format where possible. See here: <https://www.jstatsoft.org/article/view/v059i10>\
+- Store raw data in a machine readable format (i.e. CSV)
+- Set some metadata standards at the start of the project around columns and data types. It is understandable that these might change over time, but having these standards will help plan how to best accommodate changes without breaking existing work.
