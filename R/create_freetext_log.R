@@ -6,11 +6,42 @@
 #' @param response_data data.frame ODK questionnaire response data
 #' @param form_schema data.frame ODK flattened form schema data
 #' @param url The ODK submission URL excluding the uuid identifier
-#' @param ... other arguments passed to `othertext_lookup()`
+#' @param lookup a tibble formatted as a lookup to match questions with their free text responses. The format must match
+#' the output of `othertext_lookup()`. This function can be passed to this function argument as a convenient handler for this value.
 #'
 #' @return data.frame validation log
+#' @details
+#' This function needs to link a survey question with its corresponding free text response. Users can use the
+#' `othertext_lookup()` function to handle this, or provide their own tibble in the same format. See below:
+#'  tibble::tribble(
+#'  ~name, ~other_name,
+#'  question_1, question_1_other
+#'  )
 #' @export
-create_freetext_log <- function(response_data, form_schema, url, ...){
+#' @seealso [ohcleandat::othertext_lookup()]
+#' @examples
+#' \dontrun{
+#' # Using othertext_lookup helper
+#' test_a <- create_freetext_log(response_data = animal_owner_semiclean,
+#'                               form_schema = animal_owner_schema,
+#'                               url = "https://odk.xyz.io/#/projects/5/forms/project/submissions",
+#'                               lookup = ohcleandat::othertext_lookup(questionnaire = "animal_owner")
+#'                               )
+#'
+#' # using custom lookup table
+#' mylookup <- tibble::tribble(
+#'   ~name, ~other_name,
+#'   "f2_species_own", "f2a_species_own_oexp"
+#'   )
+#'
+#'   test_b <- create_freetext_log(response_data = animal_owner_semiclean,
+#'                                 form_schema = animal_owner_schema,
+#'                                 url = "https://odk.xyz.io/#/projects/5/forms/project/submissions",
+#'                                 lookup = mylookup
+#'                                 )
+#' }
+#'
+create_freetext_log <- function(response_data, form_schema, url, lookup){
 
   # identify questions with some free text response
   other_q <- form_schema |>
@@ -38,7 +69,7 @@ create_freetext_log <- function(response_data, form_schema, url, ...){
 
   # Read in pre-defined lookup of free text responses and the base multi-option question.
   # Join these with actual responses to form a validation log
-  freetext_log <- othertext_lookup(...) |>
+  freetext_log <- lookup |>
     dplyr::inner_join(multi_options, by = dplyr::join_by(name)) |>
     dplyr::inner_join(other_responses, by = dplyr::join_by(other_name == name)) |>
     dplyr::mutate(issue = "Is the free-text answer valid? Indicate IsValid = F to overwrite with the correct multiple choice response",
