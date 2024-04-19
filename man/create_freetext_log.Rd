@@ -4,7 +4,7 @@
 \alias{create_freetext_log}
 \title{Create Free Text Log}
 \usage{
-create_freetext_log(response_data, form_schema, url, ...)
+create_freetext_log(response_data, form_schema, url, lookup)
 }
 \arguments{
 \item{response_data}{data.frame ODK questionnaire response data}
@@ -13,7 +13,8 @@ create_freetext_log(response_data, form_schema, url, ...)
 
 \item{url}{The ODK submission URL excluding the uuid identifier}
 
-\item{...}{other arguments passed to `othertext_lookup()`}
+\item{lookup}{a tibble formatted as a lookup to match questions with their free text responses. The format must match
+the output of `othertext_lookup()`. This function can be passed to this function argument as a convenient handler for this value.}
 }
 \value{
 data.frame validation log
@@ -21,4 +22,38 @@ data.frame validation log
 \description{
 Creates custom validation log for 'other: explain' free text responses that may contain valid
 multi-choice options.
+}
+\details{
+This function needs to link a survey question with its corresponding free text response. Users can use the
+`othertext_lookup()` function to handle this, or provide their own tibble in the same format. See below:
+ tibble::tribble(
+ ~name, ~other_name,
+ question_1, question_1_other
+ )
+}
+\examples{
+\dontrun{
+# Using othertext_lookup helper
+test_a <- create_freetext_log(response_data = animal_owner_semiclean,
+                              form_schema = animal_owner_schema,
+                              url = "https://odk.xyz.io/#/projects/5/forms/project/submissions",
+                              lookup = ohcleandat::othertext_lookup(questionnaire = "animal_owner")
+                              )
+
+# using custom lookup table
+mylookup <- tibble::tribble(
+  ~name, ~other_name,
+  "f2_species_own", "f2a_species_own_oexp"
+  )
+
+  test_b <- create_freetext_log(response_data = animal_owner_semiclean,
+                                form_schema = animal_owner_schema,
+                                url = "https://odk.xyz.io/#/projects/5/forms/project/submissions",
+                                lookup = mylookup
+                                )
+}
+
+}
+\seealso{
+[ohcleandat::othertext_lookup()]
 }
