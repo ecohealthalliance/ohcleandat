@@ -12,7 +12,7 @@ response question."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/aj
     
     <a class="navbar-brand me-2" href="../index.html">ohcleandat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +76,32 @@ where the respondent can add free text as a response. There is no consistent
 link in the response data to match the captured responses and the other free-text
 collected. This function provides a manual look up reference so free text responses
 can be compared to the original questions in the validation workflow.</p>
+<p>This function can be expanded by providing a tibble with two columns: `name` and
+`other_name` which maps the question name in ODK to the question name containing
+'other' or 'free text'.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">othertext_lookup</span><span class="op">(</span>questionnaire <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"animal_owner"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 21 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name                      other_name                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> f2_species_own            f2a_species_own_oexp      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> f6e_rvf_vax_type          f6e_rvf_vax_type_oexp     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> f6a_protocol              f6a_protocol_other        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> f6b_which_vax             f6c_ani_vax_num_oexp      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> f6i_rvf_vax_chalenge_mult f6i_rvf_vax_chalenge_oexp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> f7b_abortion_3_which      f7b_abortion_3_which_oexp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> f7d_abortion_12_which     f7d_abortion_12_which_oexp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> f7f_abortus_dispose       f7f_abortus_dispose_oexp  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> f8_ani_contact            f8_ani_contact_oexp       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> f8c_contact_other_sp      f8c_contact_other_sp_oexp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 11 more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

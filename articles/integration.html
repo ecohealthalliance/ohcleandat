@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">ohcleandat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,6 +114,8 @@ and integrates these data sets together.</p>
 ensure the integration of multiple data sets is successful. In the case
 where there are missing, malformed or duplicate primary key, the
 expectations around the relationship type will not hold up.</p>
+<p>An overview of this integration process is below.</p>
+<p><img src="img/integration.png"></p>
 </div>
 <div class="section level2">
 <h2 id="types-of-data">Types of Data<a class="anchor" aria-label="anchor" href="#types-of-data"></a>
@@ -151,6 +153,17 @@ formats can diverge. This makes the data cleaning steps difficult and
 will slow down the ability to integrate data as above. Some general
 strategies can help to mitigate these risks:</p>
 <ul>
+<li>Ensure that data formatting to a standard where each row uniquely
+identifies a record and have a unique identifier without duplicates or
+missing values.</li>
+<li>Ensure all data are stored as a data.frame or tibble.<br>
+</li>
+<li>In R, ensure that each column has a correct and unique column type.
+(i.e. character, numeric and <em>not</em> list)<br>
+</li>
+<li>Each column name should be unique and formatted consistently to
+avoid spaces and special characters in column names. Hint: Use
+<code><a href="https://sfirke.github.io/janitor/reference/clean_names.html" class="external-link">janitor::clean_names()</a></code>.</li>
 <li>Design and enforce a Primary Key or Unique Identifier for each data
 set that will be meaningful and immutable.</li>
 <li>Think about storing data in a ‘tidy’ format where possible. See

@@ -12,7 +12,7 @@ multi-choice options."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
     
     <a class="navbar-brand me-2" href="../index.html">ohcleandat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,7 @@ multi-choice options.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_freetext_log</span><span class="op">(</span><span class="va">response_data</span>, <span class="va">form_schema</span>, <span class="va">url</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_freetext_log</span><span class="op">(</span><span class="va">response_data</span>, <span class="va">form_schema</span>, <span class="va">url</span>, <span class="va">lookup</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -71,8 +71,9 @@ multi-choice options.</p>
 <dd><p>The ODK submission URL excluding the uuid identifier</p></dd>
 
 
-<dt>...</dt>
-<dd><p>other arguments passed to `othertext_lookup()`</p></dd>
+<dt>lookup</dt>
+<dd><p>a tibble formatted as a lookup to match questions with their free text responses. The format must match
+the output of `othertext_lookup()`. This function can be passed to this function argument as a convenient handler for this value.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -81,7 +82,45 @@ multi-choice options.</p>
 
 <p>data.frame validation log</p>
     </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>This function needs to link a survey question with its corresponding free text response. Users can use the
+`othertext_lookup()` function to handle this, or provide their own tibble in the same format. See below:
+ tibble::tribble(
+ ~name, ~other_name,
+ question_1, question_1_other
+ )</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index"><p>[ohcleandat::othertext_lookup()]</p></div>
+    </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Using othertext_lookup helper</span></span></span>
+<span class="r-in"><span><span class="va">test_a</span> <span class="op">&lt;-</span> <span class="fu">create_freetext_log</span><span class="op">(</span>response_data <span class="op">=</span> <span class="va">animal_owner_semiclean</span>,</span></span>
+<span class="r-in"><span>                              form_schema <span class="op">=</span> <span class="va">animal_owner_schema</span>,</span></span>
+<span class="r-in"><span>                              url <span class="op">=</span> <span class="st">"https://odk.xyz.io/#/projects/5/forms/project/submissions"</span>,</span></span>
+<span class="r-in"><span>                              lookup <span class="op">=</span> <span class="fu">ohcleandat</span><span class="fu">::</span><span class="fu"><a href="othertext_lookup.html">othertext_lookup</a></span><span class="op">(</span>questionnaire <span class="op">=</span> <span class="st">"animal_owner"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                              <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># using custom lookup table</span></span></span>
+<span class="r-in"><span><span class="va">mylookup</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="op">~</span><span class="va">name</span>, <span class="op">~</span><span class="va">other_name</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"f2_species_own"</span>, <span class="st">"f2a_species_own_oexp"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="va">test_b</span> <span class="op">&lt;-</span> <span class="fu">create_freetext_log</span><span class="op">(</span>response_data <span class="op">=</span> <span class="va">animal_owner_semiclean</span>,</span></span>
+<span class="r-in"><span>                                form_schema <span class="op">=</span> <span class="va">animal_owner_schema</span>,</span></span>
+<span class="r-in"><span>                                url <span class="op">=</span> <span class="st">"https://odk.xyz.io/#/projects/5/forms/project/submissions"</span>,</span></span>
+<span class="r-in"><span>                                lookup <span class="op">=</span> <span class="va">mylookup</span></span></span>
+<span class="r-in"><span>                                <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

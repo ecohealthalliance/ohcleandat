@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">ohcleandat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,6 +77,14 @@
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
 <p>For help guides, check out the package vignettes.</p>
+</div>
+<div class="section level2">
+<h2 id="contributions">Contributions<a class="anchor" aria-label="anchor" href="#contributions"></a>
+</h2>
+<p>This project uses the <a href="https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow" class="external-link">Gitflow workflow</a>.</p>
+<p>All new feature requests should be done in a new branch based on <code>dev</code> or a fork of <code>dev</code>. New branches can take the form <code>feature/*</code> or <code>fix/*</code>. Once the feature is complete, automated CI checks and merge checks will be performed and a pull request should be raised to merge changes into <code>dev</code>.</p>
+<p>Once the package is nearing a release, a <code>release/x.x.x</code> branch should be created from the head of <code>dev</code>. This is used to make any changes to convert the code to production level and to increment the version number and make release notes if required before raising a PR into <code>main</code>. Once the PR into <code>main</code> is accepted, a github release should be performed, using the package version as the tag.</p>
+<p>A final step is deleting any feature and release branches and merging <code>main</code> back into <code>dev</code> and incrementing the <code>dev</code> version to <code>x.x.x.9000</code>.</p>
 </div>
 <div class="section level2">
 <h2 id="getting-help">Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
