@@ -22,4 +22,13 @@ where the respondent can add free text as a response. There is no consistent
 link in the response data to match the captured responses and the other free-text
 collected. This function provides a manual look up reference so free text responses
 can be compared to the original questions in the validation workflow.
+
+This function can be expanded by providing a tibble with two columns: `name` and
+`other_name` which maps the question name in ODK to the question name containing
+'other' or 'free text'.
+}
+\examples{
+othertext_lookup(questionnaire = c("animal_owner"))
+
+
 }

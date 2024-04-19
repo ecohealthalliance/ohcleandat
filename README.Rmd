@@ -34,6 +34,18 @@ devtools::install_github("ecohealthalliance/ohcleandat")
 
 For help guides, check out the package vignettes.   
 
+## Contributions  
+
+This project uses the [Gitflow workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow). 
+
+All new feature requests should be done in a new branch based on `dev` or a fork of `dev`. New branches can take the form `feature/*` or `fix/*`. Once the feature is complete, automated CI checks and merge checks will be performed and a pull request should be raised to merge changes into `dev`.  
+
+Once the package is nearing a release, a `release/x.x.x` branch should be created from the head of `dev`. This is used to make any changes to convert the code to production level and to increment the version number and make release notes if required before raising a PR into `main`. Once the PR into `main` is accepted, a github release should be performed, using the package version
+as the tag. 
+
+A final step is deleting any feature and release branches and merging `main` back into `dev` and
+incrementing the `dev` version to `x.x.x.9000`. 
+
 
 ## Getting Help  
 If you encounter a clear bug, please file a minimal reproducible example on [github](https://github.com/ecohealthalliance/ohcleandat/issues). 
