@@ -1,15 +1,27 @@
 #' Title
 #'
 #' @param name String. Name of rule set function e.g. create_rules_my_dataset
-#' @param dir String. Name of directory where file should be created
+#' @param dir String. Name of directory where file should be created. If it
+#' doesnt exist, a folder will be created.
 #' @param open Logical. Should the file be opened?
+#' @param showWarnings Logical. Should dir.create show warnings?
 #'
-#' @return
-#' @export
+#' @return String. File path of newly created file
+#' @export create_rules_from_template
 #'
 #' @examples
-create_rules_from_template <- function(name, dir = "/R", open = TRUE){
+#' \dontrun{
+#'     # create a ruleset and immediately open it
+#'     create_rules_from_template(name = "create_rules_field_data")
+#'     # create a ruleset and don't open it
+#'     create_rules_from_template(name = "create_rules_lab_data", open = FALSE)
+#'     # create a ruleset and store it in a different folder
+#'     create_rules_from_template(name = "create_rules_lab_data",
+#'     dir = "/path/to/rulesets" open = FALSE)
+#'     }
+create_rules_from_template <- function(name, dir = "/R", open = TRUE, showWarnings = FALSE){
 
+  dir.create(here::here("/R"),showWarnings = showWarnings, recursive = TRUE)
 
   template_text <- sprintf('%s <- function(){
     ## each rule should be named after the column its validating
@@ -43,7 +55,7 @@ create_rules_from_template <- function(name, dir = "/R", open = TRUE){
   file_path <- paste(dir,file_name,sep = "/")
   cat(template_text, file = file_path)
   if(open){
-    file.edit(file_path)
+    utils::file.edit(file_path)
   }
 
 
@@ -51,8 +63,10 @@ create_rules_from_template <- function(name, dir = "/R", open = TRUE){
 
   status <- file.exists(here::here(file_path))
 
+  if(!status){
+    rlang::abort(sprintf("%s not created",file_path))
+  }
 
-  invisible(TRUE)
-
+  return(file_path)
 
 }
