@@ -36,7 +36,6 @@ correct_data <- function(validation_log, data, primary_key){
   # preserve col types. The log deals only in character types so need to fix later
   ## need to map out readr col types to different classes
 
-
   col_types <- paste(guess_col_type(data), collapse = "")
 
   # transform to character for imputation

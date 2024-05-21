@@ -19,6 +19,7 @@ class_to_col_type
 }
 \description{
 A table that links classes to `readr` column types.
+Created from csv file of the same name in inst/
 }
 \seealso{
 [reader::cols()]

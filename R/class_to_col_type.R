@@ -1,6 +1,7 @@
 #' Class to Column Type lookup table
 #'
 #' A table that links classes to `readr` column types.
+#' Created from csv file of the same name in inst/
 #'
 #' @format ## `class_to_col_type`
 #' A data frame with 9 rows and 3 columns:

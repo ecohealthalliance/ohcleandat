@@ -23,11 +23,11 @@
 #'
 guess_col_type <- function(data, default_col_abv = "c"){
 
-  ## get column class
+  ## get col type abbreviations
    purrr::map_chr(data, function(x){
     class_x  <- data.frame(col_class = class(x))
 
-    ### what if there are no matches?
+    # class_to_col_type is created from class_to_col_type.csv in the inst folder
     class_df <- dplyr::left_join(class_x,ohcleandat::class_to_col_type,"col_class")
 
     col_abv <- dplyr::distinct(class_df,col_abv ) |>
