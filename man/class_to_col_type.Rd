@@ -21,6 +21,10 @@ class_to_col_type
 A table that links classes to `readr` column types.
 Created from csv file of the same name in inst/
 }
+\details{
+class_to_col_type <- read.csv(file = "inst/class_to_col_type.csv")
+usethis::use_data(class_to_col_type,overwrite = TRUE)
+}
 \seealso{
 [reader::cols()]
 }
