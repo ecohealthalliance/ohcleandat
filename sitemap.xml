@@ -34,6 +34,9 @@
     <loc>https://ecohealthalliance.github.io/ohcleandat/reference/check_id_existence.html</loc>
   </url>
   <url>
+    <loc>https://ecohealthalliance.github.io/ohcleandat/reference/class_to_col_type.html</loc>
+  </url>
+  <url>
     <loc>https://ecohealthalliance.github.io/ohcleandat/reference/combine_logs.html</loc>
   </url>
   <url>
@@ -77,6 +80,9 @@
   </url>
   <url>
     <loc>https://ecohealthalliance.github.io/ohcleandat/reference/get_species_letter.html</loc>
+  </url>
+  <url>
+    <loc>https://ecohealthalliance.github.io/ohcleandat/reference/guess_col_type.html</loc>
   </url>
   <url>
     <loc>https://ecohealthalliance.github.io/ohcleandat/reference/id_checker.html</loc>
