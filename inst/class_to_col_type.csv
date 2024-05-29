@@ -1,0 +1,10 @@
+﻿col_type,col_class,col_abv
+col_time,POSIXct,T
+col_time,POSIXt,T
+col_character,character,c
+col_number,numeric,n
+col_logical,logical,l
+col_date,Date,D
+col_factor,factor,f
+col_double,double,d
+col_integer,integer,i
