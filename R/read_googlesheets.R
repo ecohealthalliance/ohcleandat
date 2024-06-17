@@ -6,19 +6,23 @@
 #' @param sheet Sheet to read, in the sense of "worksheet" or "tab".
 #' @param ss Something that identifies a Google Sheet such as drive id or URL
 #' @param ... other arguments passed to `googlesheets4::range_read()`
+#' @param add_primary_key_field Logical. Should a primary key field be added?
+#' @param primary_key character. The column name for the unique identifier to be added to the data.
 #'
 #' @return tibble
 #' @export
 #' @seealso [googlesheets4::range_read()]
 #' @examples
 #' \dontrun{
-#' read_googlesheets(ss = kzn_animal_ship_sheets, sheet = "all")
+#' read_googlesheets(ss = kzn_animal_ship_sheets, sheet = "all",)
 #' }
 #'
 read_googlesheets <-
   function(key_path,
            sheet = "all",
            ss,
+           add_primary_key_field = FALSE,
+           primary_key = "primary_key",
            ...) {
     # Handle authentication
     googledrive::drive_auth(path = key_path)
@@ -30,12 +34,23 @@ read_googlesheets <-
       sheet_names <- rlang::set_names(sheet_names, sheet_names)
       dat <-
         purrr::map(sheet_names,
-                   \(x) googlesheets4::range_read(
-                     ss = ss,
-                     sheet = x,
-                     na = c("", "NA", "NULL", "-"),
-                     ...
-                   ))
+                   \(x){
+                    df  <- googlesheets4::range_read(
+                       ss = ss,
+                       sheet = x,
+                       na = c("", "NA", "NULL", "-"),
+                       ...
+                     )
+
+                    if(add_primary_key_field){
+                      #ss_sheet_rownum
+
+                      row_ids <- paste(ss,x,1:nrow(df),sep = "_")
+                      df <- df %>%
+                        dplyr::mutate({{primary_key}} := {{row_ids}})
+                    }
+                    return(df)
+                   } )
 
     } else{
       dat <-
@@ -45,6 +60,14 @@ read_googlesheets <-
           na = c("", "NA", "NULL", "-"),
           ...
         )
+
+      if(add_primary_key_field){
+        #ss_sheet_rownum
+        row_ids <- paste(ss,x,1:nrow(dat),sep = "_")
+
+        dat <- dat %>%
+          dplyr::mutate({{primary_key}} := {{row_ids}})
+      }
 
     }
 
