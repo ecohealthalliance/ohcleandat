@@ -28,7 +28,7 @@ read_googlesheets <-
     googledrive::drive_auth(path = key_path)
     googlesheets4::gs4_auth(path = key_path)
 
-    # decide of all sheets are read and combined, or just one.
+    # decide if all sheets are read and combined, or just one.
     if (sheet == "all") {
       sheet_names <- googlesheets4::sheet_names(ss = ss)
       sheet_names <- rlang::set_names(sheet_names, sheet_names)
@@ -44,8 +44,8 @@ read_googlesheets <-
 
                     if(add_primary_key_field){
                       #ss_sheet_rownum
-
-                      row_ids <- paste(ss,x,1:nrow(df),sep = "_")
+                      drive_id <- googledrive::as_id(ss)
+                      row_ids <- paste(drive_id,x,1:nrow(df),sep = "_")
                       df <- df %>%
                         dplyr::mutate({{primary_key}} := {{row_ids}})
                     }
@@ -63,8 +63,8 @@ read_googlesheets <-
 
       if(add_primary_key_field){
         #ss_sheet_rownum
-        row_ids <- paste(ss,sheet,1:nrow(dat),sep = "_")
-
+        drive_id <- googledrive::as_id(ss)
+        row_ids <- paste(drive_id,sheet,1:nrow(dat),sep = "_")
         dat <- dat %>%
           dplyr::mutate({{primary_key}} := {{row_ids}})
       }

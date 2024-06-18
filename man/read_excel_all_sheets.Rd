@@ -34,3 +34,14 @@ with data.
 The primary key method is possible because Excel forces sheet names
  to be unique.
 }
+\examples{
+ \dontrun{
+# Adding primary key field
+read_excel_all_sheet(file = "test_pk.xlsx",add_primary_key_field = TRUE)
+
+# Don't add primary key field
+read_excel_all_sheet(file = "test_pk.xlsx")
+
+    }
+
+}

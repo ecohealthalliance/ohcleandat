@@ -20,7 +20,7 @@
 #' @return list
 #' @export
 #'
-#' @example
+#' @examples
 #'  \dontrun{
 #' # Adding primary key field
 #' read_excel_all_sheet(file = "test_pk.xlsx",add_primary_key_field = TRUE)
