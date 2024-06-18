@@ -4,7 +4,14 @@
 \alias{read_googlesheets}
 \title{Read Google Sheets Data}
 \usage{
-read_googlesheets(key_path, sheet = "all", ss, ...)
+read_googlesheets(
+  key_path,
+  sheet = "all",
+  ss,
+  add_primary_key_field = FALSE,
+  primary_key = "primary_key",
+  ...
+)
 }
 \arguments{
 \item{key_path}{character path to Google authentication key json file}
@@ -12,6 +19,10 @@ read_googlesheets(key_path, sheet = "all", ss, ...)
 \item{sheet}{Sheet to read, in the sense of "worksheet" or "tab".}
 
 \item{ss}{Something that identifies a Google Sheet such as drive id or URL}
+
+\item{add_primary_key_field}{Logical. Should a primary key field be added?}
+
+\item{primary_key}{character. The column name for the unique identifier to be added to the data.}
 
 \item{...}{other arguments passed to `googlesheets4::range_read()`}
 }
@@ -23,7 +34,7 @@ For a given sheet id, this handles authentication and reads in a specified sheet
 }
 \examples{
 \dontrun{
-read_googlesheets(ss = kzn_animal_ship_sheets, sheet = "all")
+read_googlesheets(ss = kzn_animal_ship_sheets, sheet = "all",)
 }
 
 }

@@ -34,7 +34,7 @@ read_googlesheets <-
       sheet_names <- rlang::set_names(sheet_names, sheet_names)
       dat <-
         purrr::map(sheet_names,
-                   \(x){
+                   function(x){
                     df  <- googlesheets4::range_read(
                        ss = ss,
                        sheet = x,
@@ -63,7 +63,7 @@ read_googlesheets <-
 
       if(add_primary_key_field){
         #ss_sheet_rownum
-        row_ids <- paste(ss,x,1:nrow(dat),sep = "_")
+        row_ids <- paste(ss,sheet,1:nrow(dat),sep = "_")
 
         dat <- dat %>%
           dplyr::mutate({{primary_key}} := {{row_ids}})
