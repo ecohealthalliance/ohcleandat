@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ohcleandat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,23 +75,22 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>As part of the OH cleaning pipelines, raw data is converted to 'semi-clean' data
 through a process of upserting records from an external Validation Log. To ensure these
-corrections were made as expected, some checks are performed in this function.</p>
-<p>1. If no existing log exists &gt; no changes are make to data
-  - Same variables
-  - same Rows
-  - No unequal values</p>
-<p>2. If log exists but no changes are recommended &gt; no changes to data.
-  - Same variables
-  - same Rows
-  - No unequal values</p>
-<p>3. Log exists and changes recommended &gt; number of changes are same as log
-  - Same variables
-  - same Rows
-  - Number of changing records in data match records in log</p>
-<p>4. Correct fields and records are being updated
-  - Checks before and after variables and rows are the same
-  - Checks the variable names and row indexes are the same in the logs and the changed data.</p>
-    </div>
+corrections were made as expected, some checks are performed in this function.</p><ol><li><p>If no existing log exists &gt; no changes are make to data</p><ul><li><p>Same variables</p></li>
+<li><p>same Rows</p></li>
+<li><p>No unequal values</p></li>
+</ul></li>
+<li><p>If log exists but no changes are recommended &gt; no changes to data.</p><ul><li><p>Same variables</p></li>
+<li><p>same Rows</p></li>
+<li><p>No unequal values</p></li>
+</ul></li>
+<li><p>Log exists and changes recommended &gt; number of changes are same as log</p><ul><li><p>Same variables</p></li>
+<li><p>same Rows</p></li>
+<li><p>Number of changing records in data match records in log</p></li>
+</ul></li>
+<li><p>Correct fields and records are being updated</p><ul><li><p>Checks before and after variables and rows are the same</p></li>
+<li><p>Checks the variable names and row indexes are the same in the logs and the changed data.</p></li>
+</ul></li>
+</ol></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
