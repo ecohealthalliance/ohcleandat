@@ -31,7 +31,7 @@ For a given Google Drive folder this function will find and download all files
 matching a given pattern.
 }
 \details{
-Note: This relies on the `googledrive::drive_ls()` function which uses a search function
+Note: This relies on the \code{googledrive::drive_ls()} function which uses a search function
 and is not deterministic when recursively searching. Please pay attention to what is returned.
 }
 \examples{
@@ -46,5 +46,5 @@ and is not deterministic when recursively searching. Please pay attention to wha
 
 }
 \seealso{
-[googledrive::drive_ls()]
+\code{\link[googledrive:drive_ls]{googledrive::drive_ls()}}
 }

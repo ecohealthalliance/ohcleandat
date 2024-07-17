@@ -32,7 +32,7 @@ with data.
 }
 \note{
 The primary key method is possible because Excel forces sheet names
- to be unique.
+to be unique.
 }
 \examples{
  \dontrun{

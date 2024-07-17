@@ -23,5 +23,5 @@ detect_language(text = "buongiorno")
 
 }
 \seealso{
-[stringi::stri_enc_detect()]
+\code{\link[stringi:stri_enc_detect]{stringi::stri_enc_detect()}}
 }

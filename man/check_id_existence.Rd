@@ -22,7 +22,7 @@ tibble rows from x without a match in y
 }
 \description{
 This returns rows in x without a match in y. Returning selected columns only. It
-is a this wrapper around `dplyr::anti_join`.
+is a this wrapper around \code{dplyr::anti_join}.
 }
 \examples{
 \dontrun{
@@ -33,5 +33,5 @@ check_id_existence(x,
 }
 }
 \seealso{
-`dplyr::anti_join`
+\code{dplyr::anti_join}
 }

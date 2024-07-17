@@ -9,23 +9,20 @@
 #' corrections were made as expected, some checks are performed in this function.
 #'
 #' 1. If no existing log exists > no changes are make to data
-#'   - Same variables
-#'   - same Rows
-#'   - No unequal values
-#'
+#'    * Same variables
+#'    * same Rows
+#'    * No unequal values
 #' 2. If log exists but no changes are recommended > no changes to data.
-#'   - Same variables
-#'   - same Rows
-#'   - No unequal values
-#'
+#'    * Same variables
+#'    * same Rows
+#'    * No unequal values
 #' 3. Log exists and changes recommended > number of changes are same as log
-#'   - Same variables
-#'   - same Rows
-#'   - Number of changing records in data match records in log
-#'
+#'    * Same variables
+#'    * same Rows
+#'    * Number of changing records in data match records in log
 #' 4. Correct fields and records are being updated
-#'   - Checks before and after variables and rows are the same
-#'   - Checks the variable names and row indexes are the same in the logs and the changed data.
+#'    * Checks before and after variables and rows are the same
+#'    * Checks the variable names and row indexes are the same in the logs and the changed data.
 #'
 #' @param validation_log tibble Validation log
 #' @param before_data tibble Data before corrections
@@ -50,8 +47,8 @@ validation_checks <-
            after_data,
            idcol) {
     if (!is.null(validation_log)) {
-      # calculate number of assumed changes from log
-      changes <- validation_log |>
+      # preprocess the log
+      preprocess_log <- validation_log |>
         dplyr::filter(
           is_valid == "FALSE" | is_valid == "F",
           !is.na(field),
@@ -60,30 +57,37 @@ validation_checks <-
           entry != "",
           new_val != ""
         ) |>
+        dplyr::mutate("entry_field" = paste(entry,field,sep = "_")) |>
+        dplyr::mutate("entry_field_dupe" =  duplicated(entry_field,
+                                                       fromLast = TRUE)) # check for duplicate entry-field combos.
+
+        ## warning message for duplicate field and entry items
+        if(any(!preprocess_log$entry_field_dupe)){
+          rlang::warn("Detected duplicate entry-field combination. The same item has been corrected at least twice in the log")
+        }
+
+      ## message about reversions
+      if(any(preprocess_log$old_value == preprocess_log$new_val)){
+        rlang::inform("Reversion to the an original value detected in the log.")
+      }
+
+      # drop duplicate or reversion changes
+      validation_log_filtered <- preprocess_log|>
+        dplyr::filter(
+        # keep the last entry-field item for any repeated entry-field combos
+        !entry_field_dupe,
+        ## remove any changes that are reversions in the original value
+        new_val != old_value)
+
+      expected_changes <- validation_log_filtered |>
         dplyr::summarise(n = dplyr::n()) |>
         dplyr::pull(n)
 
-      val_fields <- validation_log |>
-        dplyr::filter(
-          is_valid == "FALSE" | is_valid == "F",
-          !is.na(field),
-          field != "",
-          !is.na(entry),
-          entry != "",
-          new_val != ""
-        ) |>
+      val_fields <- validation_log_filtered |>
         dplyr::pull(field) |>
         unique()
 
-      val_recs <- validation_log |>
-        dplyr::filter(
-          is_valid == "FALSE" | is_valid == "F",
-          !is.na(field),
-          field != "",
-          !is.na(entry),
-          entry != "",
-          new_val != ""
-        ) |>
+      val_recs <- validation_log_filtered |>
         dplyr::pull(entry) |>
         unique()
 
@@ -91,12 +95,12 @@ validation_checks <-
         which(dplyr::pull(before_data[idcol]) %in% val_recs)
     }
 
-    # perform dataframe comparison
+    # perform dataframe comparison ----
 
     cd <- arsenal::comparedf(before_data, after_data)
     s <- summary(cd)
 
-    ### TESTS
+    ### TESTS ----
 
     # TEST: If no existing log exists > no changes are make to data
     # same vars
@@ -133,7 +137,7 @@ validation_checks <-
     # number of changing records in data match records in log
     test3 <- if (!is.null(validation_log) & NROW(validation_log) > 0) {
       all(
-        s$comparison.summary.table[s$comparison.summary.table$statistic == "Number of values unequal", "value"] == changes,
+        s$comparison.summary.table[s$comparison.summary.table$statistic == "Number of values unequal", "value"] == expected_changes,
         s$frame.summary.table$ncol[1] ==  s$frame.summary.table$ncol[2],
         s$frame.summary.table$nrow[1] ==  s$frame.summary.table$nrow[2]
       )

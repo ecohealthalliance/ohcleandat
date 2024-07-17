@@ -18,11 +18,11 @@ logical vector
 Filters for records matching a given string.
 }
 \details{
-To be used within `dplyr::filter()`. The function returns a logical vector
-with TRUE resulting from values that are not equal to the `val` argument. Also
+To be used within \code{dplyr::filter()}. The function returns a logical vector
+with TRUE resulting from values that are not equal to the \code{val} argument. Also
 protects from NA values.
 
-Used within verbs such as `tidyselect::all_of()` this can work effectively across all
+Used within verbs such as \code{tidyselect::all_of()} this can work effectively across all
 columns in a data frame. See examples
 }
 \examples{

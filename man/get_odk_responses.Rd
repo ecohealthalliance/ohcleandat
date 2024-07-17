@@ -26,10 +26,10 @@ data.frame of flattened survey responses
 \description{
 This function handles the authentication and pulling of responses
 data for ODK Questionnaires. The raw return list is 'rectangularized' into
-a data frame first. See the `ruODK` package for more info on how this happens.
+a data frame first. See the \code{ruODK} package for more info on how this happens.
 }
 \details{
-This is a wrapper around the `ruODK` package. It handles the setup and
+This is a wrapper around the \code{ruODK} package. It handles the setup and
 authentication. See \url{https://github.com/ropensci/ruODK}
 }
 \examples{
@@ -41,5 +41,5 @@ authentication. See \url{https://github.com/ropensci/ruODK}
 }
 }
 \seealso{
-[ruODK::form_schema_ext()]
+\code{\link[ruODK:form_schema_ext]{ruODK::form_schema_ext()}}
 }

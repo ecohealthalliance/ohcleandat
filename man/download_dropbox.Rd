@@ -31,5 +31,5 @@ Downloads files from dropbox into a given directory
 
 }
 \seealso{
-[rdrop2::drop_download()]
+\code{\link[rdrop2:drop_download]{rdrop2::drop_download()}}
 }

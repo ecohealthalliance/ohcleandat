@@ -11,8 +11,8 @@
 #' \describe{
 #'   \item{col_type}{Type of column as described in `readr`}
 #'   \item{col_class}{Class of R object that matches that column type}
-#'   \item{col_abv}{Abbreviation for that column type from `reader`}
+#'   \item{col_abv}{Abbreviation for that column type from `readr`}
 #'   ...
 #' }
-#' @seealso [reader::cols()]
+#' @seealso [readr::cols()]
 "class_to_col_type"

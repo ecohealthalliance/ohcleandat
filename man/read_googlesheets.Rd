@@ -24,7 +24,7 @@ read_googlesheets(
 
 \item{primary_key}{character. The column name for the unique identifier to be added to the data.}
 
-\item{...}{other arguments passed to `googlesheets4::range_read()`}
+\item{...}{other arguments passed to \code{googlesheets4::range_read()}}
 }
 \value{
 tibble
@@ -39,5 +39,5 @@ read_googlesheets(ss = kzn_animal_ship_sheets, sheet = "all",)
 
 }
 \seealso{
-[googlesheets4::range_read()]
+\code{\link[googlesheets4:range_read]{googlesheets4::range_read()}}
 }

@@ -9,7 +9,7 @@ guess_col_type(data, default_col_abv = "c")
 \arguments{
 \item{data}{data.frame Data who column types you would like to guess}
 
-\item{default_col_abv}{string. Column type abbreviation from [readr::cols()].
+\item{default_col_abv}{string. Column type abbreviation from \code{\link[readr:cols]{readr::cols()}}.
 Use "g" to guess the column type.}
 }
 \value{

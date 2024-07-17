@@ -20,7 +20,7 @@ performs drop box upload
 Upload a local file to dropbox and handle authentication.
 }
 \details{
-This is a wrapper of `rdrop2::drop_upload()` which first reads in a local
+This is a wrapper of \code{rdrop2::drop_upload()} which first reads in a local
 CSV file and then uploads to a DropBox path.
 }
 \examples{
