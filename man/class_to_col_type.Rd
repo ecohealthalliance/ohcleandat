@@ -5,20 +5,22 @@
 \alias{class_to_col_type}
 \title{Class to Column Type lookup table}
 \format{
-## `class_to_col_type`
+\subsection{\code{class_to_col_type}}{
+
 A data frame with 9 rows and 3 columns:
 \describe{
-  \item{col_type}{Type of column as described in `readr`}
-  \item{col_class}{Class of R object that matches that column type}
-  \item{col_abv}{Abbreviation for that column type from `reader`}
-  ...
+\item{col_type}{Type of column as described in \code{readr}}
+\item{col_class}{Class of R object that matches that column type}
+\item{col_abv}{Abbreviation for that column type from \code{readr}}
+...
+}
 }
 }
 \usage{
 class_to_col_type
 }
 \description{
-A table that links classes to `readr` column types.
+A table that links classes to \code{readr} column types.
 Created from csv file of the same name in inst/
 }
 \details{
@@ -26,6 +28,6 @@ class_to_col_type <- read.csv(file = "inst/class_to_col_type.csv")
 usethis::use_data(class_to_col_type,overwrite = TRUE)
 }
 \seealso{
-[reader::cols()]
+\code{\link[readr:cols]{readr::cols()}}
 }
 \keyword{datasets}

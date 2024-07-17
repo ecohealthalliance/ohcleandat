@@ -28,6 +28,8 @@ utils::globalVariables(
   "log_response_id",
   "n",
   "rowid",
-  "set_diff"
+  "set_diff",
+  "entry_field",
+  "entry_field_dupe"
   )
 )

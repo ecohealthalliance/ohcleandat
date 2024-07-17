@@ -14,7 +14,7 @@ create_freetext_log(response_data, form_schema, url, lookup)
 \item{url}{The ODK submission URL excluding the uuid identifier}
 
 \item{lookup}{a tibble formatted as a lookup to match questions with their free text responses. The format must match
-the output of `othertext_lookup()`. This function can be passed to this function argument as a convenient handler for this value.}
+the output of \code{othertext_lookup()}. This function can be passed to this function argument as a convenient handler for this value.}
 }
 \value{
 data.frame validation log
@@ -25,11 +25,11 @@ multi-choice options.
 }
 \details{
 This function needs to link a survey question with its corresponding free text response. Users can use the
-`othertext_lookup()` function to handle this, or provide their own tibble in the same format. See below:
- tibble::tribble(
- ~name, ~other_name,
- question_1, question_1_other
- )
+\code{othertext_lookup()} function to handle this, or provide their own tibble in the same format. See below:
+tibble::tribble(
+~name, ~other_name,
+question_1, question_1_other
+)
 }
 \examples{
 \dontrun{
@@ -55,5 +55,5 @@ mylookup <- tibble::tribble(
 
 }
 \seealso{
-[ohcleandat::othertext_lookup()]
+\code{\link[=othertext_lookup]{othertext_lookup()}}
 }
