@@ -2,9 +2,9 @@
 % Please edit documentation in R/create_rules_from_template.R
 \name{create_rules_from_template}
 \alias{create_rules_from_template}
-\title{Title}
+\title{Create a "rules" file from a template}
 \usage{
-create_rules_from_template(name, dir = "/R", open = TRUE, showWarnings = FALSE)
+create_rules_from_template(name, dir = "R", open = TRUE, showWarnings = FALSE)
 }
 \arguments{
 \item{name}{String. Name of rule set function e.g. create_rules_my_dataset}
@@ -20,7 +20,7 @@ doesnt exist, a folder will be created.}
 String. File path of newly created file
 }
 \description{
-Title
+Creates a rules file from a template to show general structure of the rule file.
 }
 \examples{
 \dontrun{

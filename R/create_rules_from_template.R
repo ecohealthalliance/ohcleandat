@@ -1,4 +1,7 @@
-#' Title
+#' Create a "rules" file from a template
+#'
+#' Creates a rules file from a template to show general structure of the rule file.
+#'
 #'
 #' @param name String. Name of rule set function e.g. create_rules_my_dataset
 #' @param dir String. Name of directory where file should be created. If it
@@ -8,8 +11,6 @@
 #'
 #' @return String. File path of newly created file
 #' @export create_rules_from_template
-#'
-#'
 #'
 #' @examples
 #' \dontrun{
@@ -21,9 +22,9 @@
 #'     create_rules_from_template(name = "create_rules_lab_data",
 #'     dir = "/path/to/rulesets" open = FALSE)
 #'     }
-create_rules_from_template <- function(name, dir = "/R", open = TRUE, showWarnings = FALSE){
+create_rules_from_template <- function(name, dir = "R", open = TRUE, showWarnings = FALSE){
 
-  dir.create(here::here("/R"),showWarnings = showWarnings, recursive = TRUE)
+  dir.create(here::here(dir),showWarnings = showWarnings, recursive = TRUE)
 
   template_text <- sprintf('%s <- function(){
     ## each rule should be named after the column its validating
@@ -55,6 +56,7 @@ create_rules_from_template <- function(name, dir = "/R", open = TRUE, showWarnin
 
   file_name <- sprintf("%s.R",name)
   file_path <- paste(dir,file_name,sep = "/")
+  file.create(file_path,showWarnings = showWarnings)
   cat(template_text, file = file_path)
   if(open){
     utils::file.edit(file_path)
