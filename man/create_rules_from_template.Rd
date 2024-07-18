@@ -24,11 +24,11 @@ Title
 }
 \examples{
 \dontrun{
-    # create a ruleset and immediately open it
+# create a ruleset and immediately open it
     create_rules_from_template(name = "create_rules_field_data")
-    # create a ruleset and don't open it
+# create a ruleset and don't open it
     create_rules_from_template(name = "create_rules_lab_data", open = FALSE)
-    # create a ruleset and store it in a different folder
+# create a ruleset and store it in a different folder
     create_rules_from_template(name = "create_rules_lab_data",
     dir = "/path/to/rulesets" open = FALSE)
     }
