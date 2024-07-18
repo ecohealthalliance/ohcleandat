@@ -8,6 +8,7 @@
 #' doesnt exist, a folder will be created.
 #' @param open Logical. Should the file be opened?
 #' @param showWarnings Logical. Should dir.create show warnings?
+#' @param overwrite_file Logical. Should a rules file with the same name be overwritten?
 #'
 #' @return String. File path of newly created file
 #' @export create_rules_from_template
@@ -22,7 +23,9 @@
 #'     create_rules_from_template(name = "create_rules_lab_data",
 #'     dir = "/path/to/rulesets" open = FALSE)
 #'     }
-create_rules_from_template <- function(name, dir = "R", open = TRUE, showWarnings = FALSE){
+create_rules_from_template <- function(name, dir = "R", open = TRUE,
+                                       showWarnings = FALSE,
+                                       overwrite_file = FALSE){
 
   dir.create(here::here(dir),showWarnings = showWarnings, recursive = TRUE)
 
@@ -56,14 +59,20 @@ create_rules_from_template <- function(name, dir = "R", open = TRUE, showWarning
 
   file_name <- sprintf("%s.R",name)
   file_path <- paste(dir,file_name,sep = "/")
+
+  status_prelim <- file.exists(here::here(file_path))
+
+  if(status_prelim & !overwrite_file){
+    rlang::abort("File already exists. Set overwrite_file = TRUE to
+                create the file.")
+  }
+
+
   file.create(file_path,showWarnings = showWarnings)
   cat(template_text, file = file_path)
   if(open){
     utils::file.edit(file_path)
   }
-
-
-  return(file_path)
 
   status <- file.exists(here::here(file_path))
 
