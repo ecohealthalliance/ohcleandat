@@ -4,7 +4,13 @@
 \alias{create_rules_from_template}
 \title{Create a "rules" file from a template}
 \usage{
-create_rules_from_template(name, dir = "R", open = TRUE, showWarnings = FALSE)
+create_rules_from_template(
+  name,
+  dir = "R",
+  open = TRUE,
+  showWarnings = FALSE,
+  overwrite_file = FALSE
+)
 }
 \arguments{
 \item{name}{String. Name of rule set function e.g. create_rules_my_dataset}
@@ -15,6 +21,8 @@ doesnt exist, a folder will be created.}
 \item{open}{Logical. Should the file be opened?}
 
 \item{showWarnings}{Logical. Should dir.create show warnings?}
+
+\item{overwrite_file}{Logical. Should a rules file with the same name be overwritten?}
 }
 \value{
 String. File path of newly created file
