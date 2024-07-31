@@ -13,15 +13,18 @@
 #'
 #' @examples
 #'
-#' gps_data  <- data.frame(lat = c(1.0001, 10.22223, 4.00588),
-#'   lon = c(2.39595, 4.506930, -60.09999901))
+#'   gps_data  <- data.frame(lat = c(1.0001, 10.22223, 4.00588),
+#'     lon = c(2.39595, 4.506930, -60.09999901))
 #'
-#' gps_data |>
-#'   # default obfuscation settings correspont to roughly a 27 by 27 km area
-#'   dplyr::mutate(fuzzed_lat = obfuscate_gps(lat) %>%
-#'   # can be made more or less precise by changing the number of decimal points
-#'   # included or modifying the amount of fuzz (error) introduced
-#'   dplyr::mutate(fuzzed_lon = obfuscate_gps(lon, precision = 4, fuzz = 0.002))
+#'   # Default obfuscation settings correspont to roughly a 27 by 27 km area
+#'   gps_data$lat |>
+#'    obfuscate_gps()
+#'
+#'   # Obfuscation can be made more or less precise by changing the number of
+#'   # decimal points included or modifying the amount of fuzz (error)
+#'   # introduced
+#'   gps_data$lon |>
+#'     obfuscate_gps(precision = 4, fuzz = 0.002)
 #'
 obfuscate_gps <- function(x, precision = 2, fuzz = 0.125){
 
