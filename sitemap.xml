@@ -8,6 +8,7 @@
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/articles/outputs.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/authors.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/index.html</loc></url>
+<url><loc>https://ecohealthalliance.github.io/ohcleandat/news/index.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/autobot.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/check_id_existence.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/class_to_col_type.html</loc></url>
@@ -25,11 +26,13 @@
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/get_dropbox_val_logs.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/get_odk_form_schema.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/get_odk_responses.html</loc></url>
+<url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/get_precision.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/get_species_letter.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/guess_col_type.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/id_checker.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/index.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/make_report_urls.html</loc></url>
+<url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/obfuscate_gps.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/othertext_lookup.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/read_excel_all_sheets.html</loc></url>
 <url><loc>https://ecohealthalliance.github.io/ohcleandat/reference/read_googlesheets.html</loc></url>
