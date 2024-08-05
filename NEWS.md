@@ -1,3 +1,7 @@
+# ohcleandat 0.3.2
+
+* Fixing issue with `download_google_drive` where search pattern is over applied.
+
 # ohcleandat 0.3.1
 
 * Explicitly adding `set_diff` function which was previously a hidden dependency on the {ecohealthalliance/airtabler} package

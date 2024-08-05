@@ -39,7 +39,7 @@ and is not deterministic when recursively searching. Please pay attention to wha
   download_googledrive_files(
   key_path = here::here("./key.json"),
   drive_path = "https://drive.google.com/drive/u/0/folders/asdjfnasiffas8ef7y7y89rf",
-  search_pattern = "*.xlsx",
+  search_pattern = ".*\\\\.xlsx",
   out_path = here::here("data/project_data/")
   )
 }

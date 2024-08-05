@@ -20,7 +20,7 @@
 #'   download_googledrive_files(
 #'   key_path = here::here("./key.json"),
 #'   drive_path = "https://drive.google.com/drive/u/0/folders/asdjfnasiffas8ef7y7y89rf",
-#'   search_pattern = "*.xlsx",
+#'   search_pattern = ".*\\.xlsx",
 #'   out_path = here::here("data/project_data/")
 #'   )
 #' }
@@ -38,7 +38,7 @@ download_googledrive_files <-
     # recursive search of drive folder for a given file type
     files <- googledrive::drive_ls(
       path = googledrive::as_id(drive_path),
-      recursive = T,
+      recursive = TRUE,
       pattern = search_pattern,
       type = googledrive::drive_mime_type(MIME_type)
     )
@@ -47,27 +47,20 @@ download_googledrive_files <-
     files_w_ext <- files |>
       dplyr::mutate(
         extension = purrr::map_chr(drive_resource, `[[`, "fileExtension"),
-        path = paste0(id, ".", extension)
+        path = paste0(id, ".", extension),
+        local_path = paste({{out_path}},path,sep = "/")
       )
 
     # download all files
-    purrr::map2(
+    downloaded_files  <-  purrr::map2_df(
       .x = files_w_ext$id,
-      .y = files_w_ext$path,
-      ~ googledrive::drive_download(.x, path = paste0(out_path, .y), overwrite = TRUE)
+      .y = files_w_ext$local_path,
+      ~ googledrive::drive_download(.x, .y, overwrite = TRUE)
     )
 
-    # return list of downloaded files for tracking
-    file_list <-
-      list.files(path = out_path,
-                 pattern = search_pattern,
-                 full.names = T)
+    # return local file paths
 
-    # return list of downloaded files for tracking
-    file_list <-
-      list.files(path = out_path,
-                 pattern = search_pattern,
-                 full.names = T)
+    file_list <- downloaded_files$local_path
 
     return(file_list)
   }

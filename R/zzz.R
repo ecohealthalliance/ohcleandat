@@ -27,6 +27,7 @@ utils::globalVariables(
   "extension",
   "log_response_id",
   "n",
+  "path", # used in download_googledrive_files in mutate
   "rowid",
   "entry_field",
   "entry_field_dupe"
