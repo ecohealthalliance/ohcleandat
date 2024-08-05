@@ -1,5 +1,7 @@
 # ohcleandat 0.3.1
 
+* Explicitly adding `set_diff` function which was previously a hidden dependency on the {ecohealthalliance/airtabler} package
+
 # ohcleandat 0.3.0
 
 * Adding GPS obfuscation function - this function uses two methods to reduce the
