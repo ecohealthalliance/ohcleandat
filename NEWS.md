@@ -1,3 +1,7 @@
+# ohcleandat 0.3.3
+
+* Adds more control over the function used in `get_precision` and `obfuscate_gps`
+
 # ohcleandat 0.3.2
 
 * Fixing issue with `download_google_drive` where search pattern is over applied.
