@@ -4,13 +4,15 @@
 \alias{get_precision}
 \title{Get Precision}
 \usage{
-get_precision(x, func = c)
+get_precision(x, func = c, ...)
 }
 \arguments{
 \item{x}{Numeric. Vector of gps points}
 
 \item{func}{Function. Apply some function to the vector of precisions. Default is c so that
 all values are returned}
+
+\item{...}{Additional arguments to pass to func.}
 }
 \value{
 output of func - likely a vector

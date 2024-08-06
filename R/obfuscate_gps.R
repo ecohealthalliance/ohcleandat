@@ -11,6 +11,8 @@
 #' to the gps measurements. This is used to generate the random uniform
 #' distribution `runif(1,min = -fuzz, max = fuzz)`
 #' @param type Character. One of "lat" or "lon"
+#' @param func Function. Function used in `get_precision`
+#' @param ... Additional arguments for func.
 #'
 #' @return Numeric. A vector of fuzzed and rounded GPS points
 #' @export
@@ -57,11 +59,12 @@
 #'   obfuscate_gps(fuzz = 1, type = "lat")
 #' }
 #'
-obfuscate_gps <- function(x, precision = 2, fuzz = 0.125, type = c("lat","lon")){
+obfuscate_gps <- function(x, precision = 2, fuzz = 0.125, type = c("lat","lon"),
+                          func = min, ...){
 
   ## max precision in your data
   # find value in x with most decimal points
-  data_precision <- get_precision(x,func = min)
+  data_precision <- get_precision(x,func = func,...)
 
   msg_data_precision <- sprintf("The data have a max precision of: %s",data_precision)
   message(msg_data_precision)
@@ -183,6 +186,7 @@ obfuscate_lon <- function(x, precision = 2, fuzz = 0.125){
 #' @param x Numeric. Vector of gps points
 #' @param func Function. Apply some function to the vector of precisions. Default is c so that
 #' all values are returned
+#' @param ... Additional arguments to pass to func.
 #'
 #' @return output of func - likely a vector
 #' @export
@@ -194,9 +198,9 @@ obfuscate_lon <- function(x, precision = 2, fuzz = 0.125){
 #' get_precision(x,func = min)
 #'
 #'
-get_precision <- function(x,func = c) {
-  # number of characters with the decimal - number of chacters without it
+get_precision <- function(x,func = c,...) {
+  # number of characters with the decimal - number of characters without it
   precision <- 10^-(nchar(gsub("\\.", "", as.character(x))) - nchar(as.character(trunc(x))))
-   out <- func(precision)
+   out <- func(precision,...)
    return(out)
 }

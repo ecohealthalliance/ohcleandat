@@ -6,7 +6,14 @@
 \alias{obfuscate_lon}
 \title{Obfuscate GPS}
 \usage{
-obfuscate_gps(x, precision = 2, fuzz = 0.125, type = c("lat", "lon"))
+obfuscate_gps(
+  x,
+  precision = 2,
+  fuzz = 0.125,
+  type = c("lat", "lon"),
+  func = min,
+  ...
+)
 
 obfuscate_lat(x, precision = 2, fuzz = 0.125)
 
@@ -23,6 +30,10 @@ to the gps measurements. This is used to generate the random uniform
 distribution \code{runif(1,min = -fuzz, max = fuzz)}}
 
 \item{type}{Character. One of "lat" or "lon"}
+
+\item{func}{Function. Function used in \code{get_precision}}
+
+\item{...}{Additional arguments for func.}
 }
 \value{
 Numeric. A vector of fuzzed and rounded GPS points
