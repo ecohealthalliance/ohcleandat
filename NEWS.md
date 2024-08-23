@@ -1,3 +1,5 @@
+# ohcleandat 0.3.4
+
 # ohcleandat 0.3.3
 
 * Adds more control over the function used in `get_precision` and `obfuscate_gps`
