@@ -1,0 +1,79 @@
+{
+  "resources": [
+    {
+      "name": "my_data",
+      "path": "my_data.csv",
+      "profile": "tabular-data-resource",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "UTF-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "date",
+            "type": "date",
+            "description": "Date measurement was taken",
+            "units": null,
+            "term_uri": "https://schema.org/Date",
+            "comments": "Be careful when reading to excel. Date format may be changed",
+            "primary_key": false,
+            "foreign_key": false
+          },
+          {
+            "name": "measurement",
+            "type": "number",
+            "description": "distance to ephemeral pan from livestock pen",
+            "units": "meters",
+            "term_uri": "https://schema.org/Distance",
+            "comments": null,
+            "primary_key": false,
+            "foreign_key": false
+          },
+          {
+            "name": "measured_by",
+            "type": "string",
+            "description": "A person who measured the distance",
+            "units": null,
+            "term_uri": "https://schema.org/name",
+            "comments": null,
+            "primary_key": false,
+            "foreign_key": true
+          },
+          {
+            "name": "site_name",
+            "type": "string",
+            "description": "Name of site",
+            "units": null,
+            "term_uri": "https://schema.org/name",
+            "comments": null,
+            "primary_key": false,
+            "foreign_key": true
+          },
+          {
+            "name": "key",
+            "type": "number",
+            "description": "unique id for each row",
+            "units": null,
+            "term_uri": "https://schema.org/identifier",
+            "comments": null,
+            "primary_key": true,
+            "foreign_key": false
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "creator": [
+      {
+        "name": "A. Person"
+      },
+      {
+        "name": "B. Person"
+      }
+    ],
+    "description": "This is the abstract",
+    "identifier": "10.5281/zenodo.104126",
+    "title": "Example Dataset"
+  }
+}

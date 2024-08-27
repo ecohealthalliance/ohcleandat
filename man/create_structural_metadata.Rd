@@ -4,11 +4,23 @@
 \alias{create_structural_metadata}
 \title{Create Structural Metadata from a dataframe}
 \usage{
-create_structural_metadata(data)
+create_structural_metadata(
+  data,
+  primary_key = "",
+  foreign_key = "",
+  additional_elements = tibble::tibble()
+)
 }
 \arguments{
 \item{data}{Any named object. Expects a table but will work
 superficially with lists or named vectors.}
+
+\item{primary_key}{Character. name of field that serves as a primary key}
+
+\item{foreign_key}{Character. Field or fields that are foreign keys}
+
+\item{additional_elements}{Empty tibble with structural metadata elements and
+their types.}
 }
 \value{
 dataframe with standard metadata requirements
@@ -32,8 +44,17 @@ records in a different data set
 \examples{
 \dontrun{
 df <- data.frame(a = 1:10, b = letters[1:10])
-df_metadata  <- create_structural_metadata(df)
+df_metadata  <- ohcleandat::create_structural_metadata(df)
 write.csv(df_metadata,"df_metadata.csv")
+
+
+Additional elements can be added via a tibble
+additional_elements <- tibble::tibble(table_name = NA_character_,
+created_by = NA_character_,
+updated = NA
+)
+df_metadata  <- ohcleandat::create_structural_metadata(df,
+    additional_elements = additional_elements)
 
 # lets pretend we are using a dataset which already has
 ## in airtable, you can add field descriptions directly
@@ -50,7 +71,7 @@ write.csv(df_metadata,"df_metadata.csv")
 
  airtable_df <- airtabler::fetch_all(base = base, table_name = table_name)
 
- airtable_df_metadata <- create_structural_metadata(airtable_df)
+ airtable_df_metadata <- ohcleandat::create_structural_metadata(airtable_df)
 
  metadata_joined <- dplyr::left_join(airtable_df_metadata,airtable_metadata,
  by = c("name"="field_name"))
@@ -88,7 +109,7 @@ schema$choices_flat <-schema$`choices_english_(en)` |>
 
   data_odk <- ruODK::odata_submission_get()
   data_odk_rect <- ruODK::odata_submission_rectangle(data_odk)
-  odk_metadata <- create_structural_metadata(data_odk_rect)
+  odk_metadata <- ohcleandat::create_structural_metadata(data_odk_rect)
 
 
   odk_metadata_joined  <- dplyr::left_join(odk_metadata,schema_simple,

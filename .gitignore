@@ -5,4 +5,4 @@
 inst/doc
 docs
 auth
-.env
+**/.env
