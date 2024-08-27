@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
   ---
   
-  ```{r, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
 collapse = TRUE,
 comment = "#>"
@@ -126,7 +126,7 @@ See the [{deposits} setup guide](https://docs.ropensci.org/deposits/articles/ins
 getting an api token and installing the package.
 
 ```{r eval=FALSE}
-library(deposits)
+
 
 # set deposits token 
 # this can also be done in the `.Renviron` file or
