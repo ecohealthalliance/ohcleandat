@@ -1,3 +1,7 @@
+# ohcleandat 0.3.4
+
+* Setups up a minimal structural metadata framework for tabular datasets. 
+
 # ohcleandat 0.3.3
 
 * Adds more control over the function used in `get_precision` and `obfuscate_gps`

@@ -1,0 +1,6 @@
+name,description,units,term_uri,comments,primary_key,foreign_key
+date,Date measurement was taken,NA,https://schema.org/Date,Be careful when reading to excel. Date format may be changed,FALSE,FALSE
+measurement,distance to ephemeral pan from livestock pen,meters,https://schema.org/Distance,NA,FALSE,FALSE
+measured_by,A person who measured the distance,NA,https://schema.org/name,NA,FALSE,TRUE
+site_name,Name of site,NA,https://schema.org/name,NA,FALSE,TRUE
+key,unique id for each row,NA,https://schema.org/identifier,NA,TRUE,FALSE
