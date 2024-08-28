@@ -3,4 +3,4 @@
 "measurement","distance to ephemeral pan from livestock pen","meters","https://schema.org/Distance",NA,FALSE,FALSE
 "measured_by","A person who measured the distance",NA,"https://schema.org/name",NA,FALSE,TRUE
 "site_name","Name of site",NA,"https://schema.org/name",NA,FALSE,TRUE
-"key",NA,NA,NA,NA,TRUE,FALSE
+"key","unique id for each row",NA,"https://schema.org/identifier",NA,TRUE,FALSE

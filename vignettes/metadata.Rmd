@@ -157,7 +157,8 @@ descriptive_metadata <- list (
 
 # create a new client 
 cli <- deposits::depositsClient$new(service = "zenodo",
-                                    metadata = descriptive_metadata, sandbox = TRUE)
+                                    metadata = descriptive_metadata,
+                                    sandbox = TRUE)
 
 
 # create a new deposit item - this  creates a placeholder in zenodo
@@ -168,58 +169,22 @@ cli$deposit_new()
 # this will make a datapackage.json item in data_examples
 cli$deposit_add_resource(path = "data_examples/my_data.csv")
 
+## open the 
+
 # Take a peak at the `datapackage.json` file - you'll see the first section
 # describes the csv file, the second section describes the data in the csv,
 # the third section contains the descriptive metadata we created
 
-# Add in your metadata
+# Add your structural metadata to the frictionless metadata
 
-data_package <- frictionless::read_package("data_examples/datapackage.json")
+expand_frictionless_metadata(structural_metadata = structural_metadata,
+                             resource_name = "my_data", # name of the file with no extension
+                             resource_path = "data_examples/my_data.csv",
+                             data_package_path = "data_examples/datapackage.json")
 
-# get the schema for a resource in the data package 
-my_data_schema <- data_package|>
-                    get_schema("my_data")
-
-
-## build up schema based on structural metadata
-
-for(idx in 1:length(my_data_schema$fields)){
-  # item to build out
-  x <- my_data_schema$fields[[idx]]
-  for(idy in 1:length(structural_metadata)){
-    
-     y <- structural_metadata[idx,idy][[1]]
-    # get property name
-     property_to_add_name <- names(structural_metadata)[idy]
-     
-     # skip properties that already exist
-     if(property_to_add_name %in% names(x)){
-      next()
-     }
-     
-    property_to_add_value <- y
-    names(property_to_add_value) <- property_to_add_name
-    x <- c(x, property_to_add_value)
-  }
-  
-  # update 
-   my_data_schema$fields[[idx]] <- x
-}
-
-# update the datapackage.json
-data_package <- data_package|>
-   frictionless::remove_resource("my_data") |>
-   frictionless::add_resource(resource_name = "my_data",
-               data = "data_examples/my_data.csv", 
-               schema = my_data_schema,
-              )
-
-# write the datapackage.json
-frictionless::write_package(data_package,directory = "data_examples/")
-
-# upload to zenodo - this creates a draft deposit in Zenodo 
+# upload to zenodo - this creates a **draft** deposit in Zenodo 
 cli$deposit_upload_file(path = "data_examples/")
 
-# there are methods for embargoing or restricting 
+# there are methods for embargoing or restricting deposits in {deposits}
 
 ```

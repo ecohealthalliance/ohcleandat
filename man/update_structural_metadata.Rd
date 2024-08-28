@@ -32,3 +32,6 @@ data.frame
 Appends rows and/or columns to existing metadata, change primary key and/or
 adds foreign keys.
 }
+\note{
+See vignette on metadata for examples
+}

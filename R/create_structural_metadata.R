@@ -179,10 +179,10 @@ create_structural_metadata <- function(data,
 #' @param additional_elements data frame. OPTIONAL Empty tibble with structural
 #' metadata elements and their types.
 #'
+#' @note See vignette on metadata for examples
+#'
 #' @return data.frame
 #' @export
-#'
-#' @examples
 update_structural_metadata <- function(data,metadata,primary_key = "", foreign_key = "",additional_elements = tibble::tibble()){
 
   existing_fkeys <- metadata |>

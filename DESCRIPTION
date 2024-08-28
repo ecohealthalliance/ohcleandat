@@ -23,6 +23,7 @@ Imports:
     arsenal,
     containerTemplateUtils (>= 0.0.0.9006),
     dplyr,
+    frictionless,
     googledrive,
     googlesheets4,
     here,
