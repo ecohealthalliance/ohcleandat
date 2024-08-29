@@ -85,7 +85,7 @@ expand_frictionless_metadata <- function(structural_metadata,
   data_package <- data_package|>
     frictionless::remove_resource(resource_name) |>
     frictionless::add_resource(resource_name = resource_name,
-                               data = "data_examples/my_data.csv",
+                               data = resource_path,
                                schema = my_data_schema,
     )
 
