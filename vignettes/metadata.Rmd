@@ -1,11 +1,11 @@
 ---
-title: "Metadata: Creating Standard Metadata with {ohcleandat} and {deposits}"
+title: "Metadata: Creating Standard Metadata with `{ohcleandat}` and `{deposits}`"
 output: rmarkdown::html_vignette
 vignette: >
-%\VignetteIndexEntry{metadata}
+  %\VignetteIndexEntry{metadata}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  ---
+---
   
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
