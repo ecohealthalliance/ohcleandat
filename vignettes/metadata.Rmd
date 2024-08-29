@@ -120,10 +120,13 @@ so I end up with this thing called `datapackage.json` that stores all of my meta
 
 The `datapackage.json` structural metadata is pretty minimal - it only includes
 field name and type (numeric, character, etc). So we want to add our metadata
-to that. [add something about DCMI terms]
+to that. 
 
 See the [{deposits} setup guide](https://docs.ropensci.org/deposits/articles/install-setup.html) for
-getting an api token and installing the package.
+getting an api token and installing the package. It might also be helpful to 
+review the `metadata_template.json` file when creating the descriptive metadata.
+Only certain DCMI terms can be included in the descriptive metadata and their
+formatting can be a little tricky. 
 
 ```{r eval=FALSE}
 
