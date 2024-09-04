@@ -1,4 +1,9 @@
-#' Title
+#' Update descriptive metadata in frictionless datapackage
+#'
+#' This function overwrites the descriptive metadata associated with a
+#' frictionless datapackage. It does *NOT* validate the metadata, or check
+#' for conflicts with existing descriptive metadata. It is very easy to create
+#' invalid metadata.
 #'
 #' @param descriptive_metadata List of descriptive metadata terms.
 #' @param data_package_path Character. Path to datapackage.json file
