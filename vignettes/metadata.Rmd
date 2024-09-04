@@ -185,9 +185,25 @@ expand_frictionless_metadata(structural_metadata = structural_metadata,
                              resource_path = "data_examples/my_data.csv",
                              data_package_path = "data_examples/datapackage.json")
 
+
+## OOPs actually I need to add more to the description
+
+descriptive_metadata <- list (
+    title = "Example Dataset",
+    description = "This is the abstract but it needs more detail",
+    creator = list (list (name = "A. Person"), list (name = "B. Person"),list (name = "C. Person"),list (name = "F. Person"))
+    # , accessRights = "open"
+)
+update_frictionless_metadata(descriptive_metadata = descriptive_metadata,
+                             data_package_path = "data_examples/datapackage.json"
+)
+
+cli$deposit_fill_metadata(descriptive_metadata)
+# update deposit hangs if the descriptive metadata is not properly formatted, even after correction
 # upload to zenodo - this creates a **draft** deposit in Zenodo 
 cli$deposit_upload_file(path = "data_examples/")
 
 # there are methods for embargoing or restricting deposits in {deposits}
+
 
 ```
