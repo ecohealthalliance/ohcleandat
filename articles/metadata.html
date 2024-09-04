@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ohcleandat</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -248,6 +248,21 @@ little tricky.</p>
 <span>                             resource_path <span class="op">=</span> <span class="st">"data_examples/my_data.csv"</span>,</span>
 <span>                             data_package_path <span class="op">=</span> <span class="st">"data_examples/datapackage.json"</span><span class="op">)</span></span>
 <span></span>
+<span></span>
+<span><span class="co">## OOPs actually I need to add more to the description</span></span>
+<span></span>
+<span><span class="va">descriptive_metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span> <span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Example Dataset"</span>,</span>
+<span>    description <span class="op">=</span> <span class="st">"This is the abstract but it needs more detail"</span>,</span>
+<span>    creator <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span> <span class="op">(</span>name <span class="op">=</span> <span class="st">"A. Person"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span> <span class="op">(</span>name <span class="op">=</span> <span class="st">"B. Person"</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span> <span class="op">(</span>name <span class="op">=</span> <span class="st">"C. Person"</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span> <span class="op">(</span>name <span class="op">=</span> <span class="st">"F. Person"</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="co"># , accessRights = "open"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/update_frictionless_metadata.html">update_frictionless_metadata</a></span><span class="op">(</span>descriptive_metadata <span class="op">=</span> <span class="va">descriptive_metadata</span>,</span>
+<span>                             data_package_path <span class="op">=</span> <span class="st">"data_examples/datapackage.json"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cli</span><span class="op">$</span><span class="fu">deposit_fill_metadata</span><span class="op">(</span><span class="va">descriptive_metadata</span><span class="op">)</span></span>
+<span><span class="co"># update deposit hangs if the descriptive metadata is not properly formatted, even after correction</span></span>
 <span><span class="co"># upload to zenodo - this creates a **draft** deposit in Zenodo </span></span>
 <span><span class="va">cli</span><span class="op">$</span><span class="fu">deposit_upload_file</span><span class="op">(</span>path <span class="op">=</span> <span class="st">"data_examples/"</span><span class="op">)</span></span>
 <span></span>
