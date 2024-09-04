@@ -1,3 +1,7 @@
+# ohcleandat 0.3.6
+
+* Adds a function to update the descriptive metadata in a frictionless datapackage
+
 # ohcleandat 0.3.5
 
 # ohcleandat 0.3.4
