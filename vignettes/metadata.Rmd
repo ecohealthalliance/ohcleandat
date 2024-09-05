@@ -186,6 +186,10 @@ expand_frictionless_metadata(structural_metadata = structural_metadata,
                              data_package_path = "data_examples/datapackage.json")
 
 
+# update the deposit the new structural metadata
+cli$deposit_update()
+
+
 ## OOPs actually I need to add more to the description
 
 descriptive_metadata <- list (
@@ -194,6 +198,8 @@ descriptive_metadata <- list (
     creator = list (list (name = "A. Person"), list (name = "B. Person"),list (name = "C. Person"),list (name = "F. Person"))
     # , accessRights = "open"
 )
+
+
 update_frictionless_metadata(descriptive_metadata = descriptive_metadata,
                              data_package_path = "data_examples/datapackage.json"
 )
