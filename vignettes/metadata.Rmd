@@ -186,9 +186,6 @@ expand_frictionless_metadata(structural_metadata = structural_metadata,
                              data_package_path = "data_examples/datapackage.json")
 
 
-# update the deposit the new structural metadata
-cli$deposit_update()
-
 
 ## OOPs actually I need to add more to the description
 
@@ -208,6 +205,15 @@ cli$deposit_fill_metadata(descriptive_metadata)
 # update deposit hangs if the descriptive metadata is not properly formatted, even after correction
 # upload to zenodo - this creates a **draft** deposit in Zenodo 
 cli$deposit_upload_file(path = "data_examples/")
+
+## update structural metadata
+
+structural_metadata[1,2] <- "New description"
+
+expand_frictionless_metadata(structural_metadata = structural_metadata,
+                             resource_name = "my_data", # name of the file with no extension
+                             resource_path = "data_examples/my_data.csv",
+                             data_package_path = "data_examples/datapackage.json")
 
 # there are methods for embargoing or restricting deposits in {deposits}
 

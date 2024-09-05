@@ -67,15 +67,14 @@ expand_frictionless_metadata <- function(structural_metadata,
       # get property name
       property_to_add_name <- names(structural_metadata)[idy]
       property_to_add_value <- y
+      names(property_to_add_value) <- property_to_add_name
 
       # overwrite properties that already exist
       if(property_to_add_name %in% names(x)){
         x[property_to_add_name] <- property_to_add_value
         next()
       }
-
-
-      names(property_to_add_value) <- property_to_add_name
+      # add new property
       x <- c(x, property_to_add_value)
     }
 
