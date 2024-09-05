@@ -26,7 +26,7 @@ Updates the datapackage, returns nothing
 }
 \description{
 Loops over elements in the structural metadata and adds them to frictionless
-metadata schema.
+metadata schema. Will overwrite existing values.
 }
 \examples{
 \dontrun{

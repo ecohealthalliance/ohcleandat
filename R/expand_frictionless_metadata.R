@@ -1,7 +1,7 @@
 #' Expand Frictionless Metadata with structural metadata
 #'
 #' Loops over elements in the structural metadata and adds them to frictionless
-#' metadata schema.
+#' metadata schema. Will overwrite existing values.
 #'
 #' @param structural_metadata Dataframe. Structural metadata from
 #' `create_structural_metadata` or `update_structural_metadata`
@@ -66,13 +66,15 @@ expand_frictionless_metadata <- function(structural_metadata,
       y <- structural_metadata[idx,idy][[1]]
       # get property name
       property_to_add_name <- names(structural_metadata)[idy]
+      property_to_add_value <- y
 
-      # skip properties that already exist
+      # overwrite properties that already exist
       if(property_to_add_name %in% names(x)){
+        x[property_to_add_name] <- property_to_add_value
         next()
       }
 
-      property_to_add_value <- y
+
       names(property_to_add_value) <- property_to_add_name
       x <- c(x, property_to_add_value)
     }

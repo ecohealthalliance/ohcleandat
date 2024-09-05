@@ -1,3 +1,7 @@
+# ohcleandat 0.3.7
+
+* Fixing bug in expand metadata - function now allows for updates
+
 # ohcleandat 0.3.6
 
 * Adds a function to update the descriptive metadata in a frictionless datapackage
