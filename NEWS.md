@@ -1,5 +1,7 @@
 # ohcleandat 0.3.8
 
+* Fixing bug in bug fix - naming properties that will be updated
+
 # ohcleandat 0.3.7
 
 * Fixing bug in expand metadata - function now allows for updates
