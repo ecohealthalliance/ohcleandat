@@ -29,7 +29,11 @@ get_dropbox_val_logs <-
 
     # check file exists - it wont on first push
     if (!rdrop2::drop_exists(full_path_name)) {
-      return(NULL)
+      # check for zip version
+      full_path_name <- make_zip_path(full_path_name)
+      if(!rdrop2::drop_exists(full_path_name)){
+        return(NULL)
+      }
     }
 
     # download file from drop box
@@ -42,6 +46,11 @@ get_dropbox_val_logs <-
     # reading in the log, detecting with excel or csv
     local_path <- sprintf("%s/%s", "dropbox_validations", file_name)
 
+    # unzip if zipped
+    if (stringr::str_detect(full_path_name, ".zip")) {
+      utils::unzip(zipfile = full_path_name,files = here::here(local_path))
+    }
+
     if (stringr::str_detect(file_name, ".xls|.xlsx")) {
       df <- readxl::read_xlsx(here::here(local_path))
     }
@@ -52,6 +61,8 @@ get_dropbox_val_logs <-
                         col_types = "iiccccccccc",
                         na = character())
     }
+
+
 
     # this ensures the log is ordered correctly before cleaning operations in case the user
     # has sorted the data before upload. Order is important so changes are processed sequentially.
