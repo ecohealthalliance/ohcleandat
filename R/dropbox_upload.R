@@ -30,7 +30,7 @@ dropbox_upload <- function(log, file_path, dropbox_path,compress = TRUE) {
   file_to_upload <- file_path
 
   # check the file size
-  file_size_check <- (file.size(file_path)/10^6) < 300
+  file_size_check <- (file.size(file_path)/10^6) > 300
 
   # if compress and file size is greater than 300 then zip it
   if(all(compress,file_size_check)){
