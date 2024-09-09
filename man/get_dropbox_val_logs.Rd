@@ -7,7 +7,11 @@
 get_dropbox_val_logs(file_name, folder, path_name)
 }
 \arguments{
-\item{file_name}{character file name with extension of the validation log}
+\item{file_name}{character file name with extension of the validation log.
+Note that file may have been zipped on upload if its over 300mb. This file
+will be automatically unzipped on download so provide the file extenstion for
+the compressed file, not the zipped file. E.g. "val_log.csv" even if on
+dropbox its stored as "val_log.zip".}
 
 \item{folder}{character the folder the log is saved in on drop box. Can be NULL if not in subfolder.}
 

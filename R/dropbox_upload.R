@@ -1,6 +1,7 @@
 #' Dropbox Upload
 #'
-#' Upload a local file to dropbox and handle authentication.
+#' Upload a local file to dropbox and handle authentication. Automatically
+#' zips files over 300mb by default.
 #'
 #' @details
 #' This is a wrapper of `rdrop2::drop_upload()` which first reads in a local

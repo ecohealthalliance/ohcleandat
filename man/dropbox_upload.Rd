@@ -19,7 +19,8 @@ dropbox_upload(log, file_path, dropbox_path, compress = TRUE)
 performs drop box upload
 }
 \description{
-Upload a local file to dropbox and handle authentication.
+Upload a local file to dropbox and handle authentication. Automatically
+zips files over 300mb by default.
 }
 \details{
 This is a wrapper of \code{rdrop2::drop_upload()} which first reads in a local

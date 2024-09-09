@@ -1,5 +1,7 @@
 # ohcleandat 0.3.9
 
+* Files over 300mb are zipped before attempting to upload them to dropbox. Zipped validation logs on dropbox are automatically unzipped. 
+
 # ohcleandat 0.3.8
 
 * Fixing bug in bug fix - naming properties that will be updated
