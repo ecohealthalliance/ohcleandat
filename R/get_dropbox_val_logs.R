@@ -52,7 +52,8 @@ get_dropbox_val_logs <-
 
     # unzip if zipped
     if (stringr::str_detect(full_path_name, ".zip")) {
-      utils::unzip(zipfile = full_path_name,files = here::here(local_path))
+      local_zip_path <- make_zip_path(local_path)
+      utils::unzip(zipfile = local_zip_path,files = here::here(local_path))
     }
 
     if (stringr::str_detect(file_name, ".xls|.xlsx")) {
