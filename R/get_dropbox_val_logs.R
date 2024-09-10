@@ -6,7 +6,11 @@
 #' locally download the file to 'dropbox_validations' directory and read in to the
 #' session.
 #'
-#' @param file_name character file name with extension of the validation log
+#' @param file_name character file name with extension of the validation log.
+#' Note that file may have been zipped on upload if its over 300mb. This file
+#' will be automatically unzipped on download so provide the file extenstion for
+#'  the compressed file, not the zipped file. E.g. "val_log.csv" even if on
+#'  dropbox its stored as "val_log.zip".
 #' @param folder character the folder the log is saved in on drop box. Can be NULL if not in subfolder.
 #' @param path_name character the default drop box path
 #'
@@ -29,7 +33,11 @@ get_dropbox_val_logs <-
 
     # check file exists - it wont on first push
     if (!rdrop2::drop_exists(full_path_name)) {
-      return(NULL)
+      # check for zip version
+      full_path_name <- make_zip_path(full_path_name)
+      if(!rdrop2::drop_exists(full_path_name)){
+        return(NULL)
+      }
     }
 
     # download file from drop box
@@ -42,6 +50,12 @@ get_dropbox_val_logs <-
     # reading in the log, detecting with excel or csv
     local_path <- sprintf("%s/%s", "dropbox_validations", file_name)
 
+    # unzip if zipped
+    if (stringr::str_detect(full_path_name, ".zip")) {
+      local_zip_path <- make_zip_path(local_path)
+      utils::unzip(zipfile = local_zip_path,files = here::here(local_path))
+    }
+
     if (stringr::str_detect(file_name, ".xls|.xlsx")) {
       df <- readxl::read_xlsx(here::here(local_path))
     }
@@ -52,6 +66,8 @@ get_dropbox_val_logs <-
                         col_types = "iiccccccccc",
                         na = character())
     }
+
+
 
     # this ensures the log is ordered correctly before cleaning operations in case the user
     # has sorted the data before upload. Order is important so changes are processed sequentially.

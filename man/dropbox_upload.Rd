@@ -4,20 +4,23 @@
 \alias{dropbox_upload}
 \title{Dropbox Upload}
 \usage{
-dropbox_upload(log, file_path, dropbox_path)
+dropbox_upload(log, file_path, dropbox_path, compress = TRUE)
 }
 \arguments{
-\item{log}{Validation Log for OH cleaning pipelines}
+\item{log}{dataframe. Validation Log for OH cleaning pipelines. Will work with any tabular data.}
 
-\item{file_path}{local file path for upload}
+\item{file_path}{character. local file path for upload}
 
-\item{dropbox_path}{relative dropbox path}
+\item{dropbox_path}{character. relative dropbox path}
+
+\item{compress}{logical. Should files over 300mb be compressed?}
 }
 \value{
 performs drop box upload
 }
 \description{
-Upload a local file to dropbox and handle authentication.
+Upload a local file to dropbox and handle authentication. Automatically
+zips files over 300mb by default.
 }
 \details{
 This is a wrapper of \code{rdrop2::drop_upload()} which first reads in a local
