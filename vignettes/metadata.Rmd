@@ -217,7 +217,7 @@ expand_frictionless_metadata(structural_metadata = structural_metadata,
 
 ## remove an element from the structural metadata and datapackage
 
-# dropping the comments field because comments field
+# dropping the comments field 
 structural_metadata <- structural_metadata[-5]
 
 expand_frictionless_metadata(structural_metadata = structural_metadata,
