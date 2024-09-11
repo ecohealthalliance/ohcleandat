@@ -53,7 +53,8 @@ metadata schema. Will overwrite existing values.</p>
 <span>  <span class="va">structural_metadata</span>,</span>
 <span>  <span class="va">resource_name</span>,</span>
 <span>  <span class="va">resource_path</span>,</span>
-<span>  <span class="va">data_package_path</span></span>
+<span>  <span class="va">data_package_path</span>,</span>
+<span>  prune_datapackage <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -76,6 +77,11 @@ metadata schema. Will overwrite existing values.</p>
 
 <dt id="arg-data-package-path">data_package_path<a class="anchor" aria-label="anchor" href="#arg-data-package-path"></a></dt>
 <dd><p>Character. Path to datapackage.json file</p></dd>
+
+
+<dt id="arg-prune-datapackage">prune_datapackage<a class="anchor" aria-label="anchor" href="#arg-prune-datapackage"></a></dt>
+<dd><p>Logical. Should properties not in the structural metadata
+be removed?</p></dd>
 
 </dl></div>
     <div class="section level2">

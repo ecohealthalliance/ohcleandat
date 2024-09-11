@@ -278,6 +278,17 @@ little tricky.</p>
 <span>                             resource_path <span class="op">=</span> <span class="st">"data_examples/my_data.csv"</span>,</span>
 <span>                             data_package_path <span class="op">=</span> <span class="st">"data_examples/datapackage.json"</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co">## remove an element from the structural metadata and datapackage</span></span>
+<span></span>
+<span><span class="co"># dropping the comments field because comments field</span></span>
+<span><span class="va">structural_metadata</span> <span class="op">&lt;-</span> <span class="va">structural_metadata</span><span class="op">[</span><span class="op">-</span><span class="fl">5</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/expand_frictionless_metadata.html">expand_frictionless_metadata</a></span><span class="op">(</span>structural_metadata <span class="op">=</span> <span class="va">structural_metadata</span>,</span>
+<span>                             resource_name <span class="op">=</span> <span class="st">"my_data"</span>, <span class="co"># name of the file with no extension</span></span>
+<span>                             resource_path <span class="op">=</span> <span class="st">"data_examples/my_data.csv"</span>,</span>
+<span>                             data_package_path <span class="op">=</span> <span class="st">"data_examples/datapackage.json"</span>,</span>
+<span>                             prune_datapackage <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># this is the default</span></span>
+<span></span>
 <span><span class="co"># there are methods for embargoing or restricting deposits in {deposits}</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
