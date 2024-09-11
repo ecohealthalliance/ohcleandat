@@ -62,6 +62,10 @@
 obfuscate_gps <- function(x, precision = 2, fuzz = 0.125, type = c("lat","lon"),
                           func = min, ...){
 
+  if(!is.numeric(x)){
+    stop("x must be numeric")
+  }
+
   ## max precision in your data
   # find value in x with most decimal points
   data_precision <- get_precision(x,func = func,...)
