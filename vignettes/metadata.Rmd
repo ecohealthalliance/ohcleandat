@@ -215,6 +215,17 @@ expand_frictionless_metadata(structural_metadata = structural_metadata,
                              resource_path = "data_examples/my_data.csv",
                              data_package_path = "data_examples/datapackage.json")
 
+## remove an element from the structural metadata and datapackage
+
+# dropping the comments field because comments field
+structural_metadata <- structural_metadata[-5]
+
+expand_frictionless_metadata(structural_metadata = structural_metadata,
+                             resource_name = "my_data", # name of the file with no extension
+                             resource_path = "data_examples/my_data.csv",
+                             data_package_path = "data_examples/datapackage.json",
+                             prune_datapackage = TRUE) # this is the default
+
 # there are methods for embargoing or restricting deposits in {deposits}
 
 
