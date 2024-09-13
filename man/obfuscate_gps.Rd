@@ -77,6 +77,12 @@ gps_data_180  <- data.frame(lat = c(2, 3, 4),
 gps_data_180$lon |>
   obfuscate_gps(fuzz = 1, type = "lon")
 
+### working NA GPS data
+gps_data_180  <- data.frame(lat = c(2, 3, 4),
+                            lon = c(179.39595, NA, -178.09999901))
+gps_data_180$lon |>
+  obfuscate_gps(fuzz = 1, type = "lon")
+
 ### GPS is on the fritz!
 \dontrun{
 gps_data_fritz <- data.frame(lat = c(91, -91, 90),

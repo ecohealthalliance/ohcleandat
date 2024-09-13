@@ -48,6 +48,12 @@
 #' gps_data_180$lon |>
 #'   obfuscate_gps(fuzz = 1, type = "lon")
 #'
+#' ### working NA GPS data
+#' gps_data_180  <- data.frame(lat = c(2, 3, 4),
+#'                             lon = c(179.39595, NA, -178.09999901))
+#' gps_data_180$lon |>
+#'   obfuscate_gps(fuzz = 1, type = "lon")
+#'
 #' ### GPS is on the fritz!
 #' \dontrun{
 #' gps_data_fritz <- data.frame(lat = c(91, -91, 90),
@@ -61,6 +67,11 @@
 #'
 obfuscate_gps <- function(x, precision = 2, fuzz = 0.125, type = c("lat","lon"),
                           func = min, ...){
+
+
+  if(!is.numeric(x)){
+    stop("x must be numeric")
+  }
 
   ## max precision in your data
   # find value in x with most decimal points
@@ -122,7 +133,9 @@ obfuscate_lat <- function(x, precision = 2, fuzz = 0.125){
     stop("fuzz greater than range of latitude on earth")
   }
 
-  if(any(x > 90 | x < -90)){
+  range_check <- stats::na.omit(x > 90 | x < -90)
+
+  if(any(range_check)){
     stop("Latitude is outside the range of latitude on earth")
   }
 
@@ -130,6 +143,9 @@ obfuscate_lat <- function(x, precision = 2, fuzz = 0.125){
 
   # make sure point is between 90 and -90
   points_in_range <- purrr::map_dbl(points,function(point){
+    if(is.na(point)){
+      return(point)
+    }
     while(all(point > 90 | point < -90)){
       point <- obfuscate_point(point,precision,fuzz)
     }
@@ -154,7 +170,8 @@ obfuscate_lon <- function(x, precision = 2, fuzz = 0.125){
     stop("fuzz greater than range of longitude on earth")
   }
 
-  if(any(x > 180 | x < -180)){
+  range_check <- stats::na.omit(x > 180 | x < -180)
+  if(any(range_check)){
     stop("Longitude is outside the range of longitude on earth ")
   }
 
@@ -162,7 +179,9 @@ obfuscate_lon <- function(x, precision = 2, fuzz = 0.125){
 
   ### wrap points near the 180th meridian
   points_in_range <- purrr::map_dbl(points,function(point){
-
+    if(is.na(point)){
+      return(point)
+    }
     # if point greater than 180, wrap
      if(point > 180){
       difference <- point - 180
@@ -199,6 +218,8 @@ obfuscate_lon <- function(x, precision = 2, fuzz = 0.125){
 #'
 #'
 get_precision <- function(x,func = c,...) {
+  # drop NAs
+  x <- stats::na.omit(x)
   # number of characters with the decimal - number of characters without it
   precision <- 10^-(nchar(gsub("\\.", "", as.character(x))) - nchar(as.character(trunc(x))))
    out <- func(precision,...)
