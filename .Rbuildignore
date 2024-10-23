@@ -7,3 +7,5 @@
 ^docs$
 ^pkgdown$
 ^\.env$
+^doc$
+^Meta$
