@@ -31,15 +31,16 @@ generated then joined to pre-existing metadata via field names.
 }
 \details{
 The metadata table produced has the following elements
-
-\code{name} = The name of the field. This is taken as is from \code{data}.
-\code{description} = Description of that field. May be provided by controlled vocabulary
-\code{units} = Units of measure for that field. May or may not apply
-\code{term_uri} = Universal Resource Identifier for a term from a controlled vocabulary or schema
-\code{comments} = Free text providing additional details about the field
-\code{primary_key} = \code{TRUE} or \code{FALSE}, Uniquely identifies each record in the data
-\code{foreign_key} = \code{TRUE} or \code{FALSE}, Allows for linkages between data sets. Uniquely identifies
+\itemize{
+\item \code{name} = The name of the field. This is taken as is from \code{data}.
+\item \code{description} = Description of that field. May be provided by controlled vocabulary
+\item \code{units} = Units of measure for that field. May or may not apply
+\item \code{term_uri} = Universal Resource Identifier for a term from a controlled vocabulary or schema
+\item \code{comments} = Free text providing additional details about the field
+\item \code{primary_key} = \code{TRUE} or \code{FALSE}, Uniquely identifies each record in the data
+\item \code{foreign_key} = \code{TRUE} or \code{FALSE}, Allows for linkages between data sets. Uniquely identifies
 records in a different data set
+}
 }
 \examples{
 \dontrun{

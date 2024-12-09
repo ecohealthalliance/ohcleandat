@@ -1,7 +1,9 @@
 #' Expand Frictionless Metadata with structural metadata
 #'
-#' Loops over elements in the structural metadata and adds them to frictionless
-#' metadata schema. Will overwrite existing values.
+#' Loops over elements in the structural metadata and adds
+#' them to the frictionless metadata schema. Will overwrite existing values and
+#' remove any fields from the datapackage metadata not listed in the structural
+#' metadata.
 #'
 #' @param structural_metadata Dataframe. Structural metadata from
 #' `create_structural_metadata` or `update_structural_metadata`
@@ -27,7 +29,7 @@
 #' # update structural metadata
 #' write.csv(data_codebook,"my/codebook.csv", row.names = FALSE)
 #'
-#' data_codebook_updated <- read.csv(""my/codebook.csv"")
+#' data_codebook_updated <- read.csv("my/codebook.csv")
 #'
 #' # create frictionless package - this is done automatically with the
 #' # deposits package
@@ -61,9 +63,29 @@ expand_frictionless_metadata <- function(structural_metadata,
 
   ## build up schema based on structural metadata
 
-  for(idx in 1:length(my_data_schema$fields)){
+  ## drop fields that were removed from the structural metadata
+  if(nrow(structural_metadata) <= length(my_data_schema$fields)){
+    my_data_schema$fields <- my_data_schema$fields[1:nrow(structural_metadata)]
+  }
+
+  # for each row, update the schema
+  for(idx in 1:nrow(structural_metadata)){
     # item to build out
-    x <- my_data_schema$fields[[idx]]
+    ## row may not exist in the original data.
+     x <- tryCatch(
+      expr = {
+        ## get the fields item we want to update
+        my_data_schema$fields[[idx]]
+      },
+      error = function(e){
+        ## use the first index item
+        msg<- sprintf("Adding %s to frictionless metadata",structural_metadata$name[[idx]])
+        message(msg)
+        my_data_schema$fields[[1]]
+      }
+    )
+
+
     for(idy in 1:length(structural_metadata)){
 
       y <- structural_metadata[idx,idy][[1]]
@@ -85,6 +107,8 @@ expand_frictionless_metadata <- function(structural_metadata,
     my_data_schema$fields[[idx]] <- x
   }
 
+
+  ## prune the properties of items in the schema, does not remove fields
   if(prune_datapackage){
     my_data_schema <- prune_datapackage(my_data_schema,structural_metadata)
   }
@@ -104,7 +128,7 @@ expand_frictionless_metadata <- function(structural_metadata,
 }
 
 
-#' Prune data pacakge
+#' Prune field properties in a data package
 #'
 #' method to remove properties from the metadata for a dataset in a datapackage
 #'
@@ -136,3 +160,5 @@ prune_datapackage <- function(my_data_schema, structural_metadata){
 
   return(my_data_schema_pruned)
 }
+
+

@@ -1,3 +1,8 @@
+# ohcleandat 0.3.12
+
+* `expand_frictionless_metadata` can add and remove fields from the metadata depending
+on the structural metadata supplied. 
+
 # ohcleandat 0.3.11
 
 * obfuscate gps can now handle NAs
