@@ -29,8 +29,10 @@ be removed?}
 Updates the datapackage, returns nothing
 }
 \description{
-Loops over elements in the structural metadata and adds them to frictionless
-metadata schema. Will overwrite existing values.
+Loops over elements in the structural metadata and adds
+them to the frictionless metadata schema. Will overwrite existing values and
+remove any fields from the datapackage metadata not listed in the structural
+metadata.
 }
 \examples{
 \dontrun{

@@ -1,7 +1,9 @@
 #' Expand Frictionless Metadata with structural metadata
 #'
-#' Loops over elements in the structural metadata and adds them to frictionless
-#' metadata schema. Will overwrite existing values.
+#' Loops over elements in the structural metadata and adds
+#' them to the frictionless metadata schema. Will overwrite existing values and
+#' remove any fields from the datapackage metadata not listed in the structural
+#' metadata.
 #'
 #' @param structural_metadata Dataframe. Structural metadata from
 #' `create_structural_metadata` or `update_structural_metadata`
@@ -61,6 +63,11 @@ expand_frictionless_metadata <- function(structural_metadata,
 
   ## build up schema based on structural metadata
 
+  ## drop fields that were removed from the structural metadata
+  if(nrow(structural_metadata) <= length(my_data_schema$fields)){
+    my_data_schema$fields <- my_data_schema$fields[1:nrow(structural_metadata)]
+  }
+
   # for each row, update the schema
   for(idx in 1:nrow(structural_metadata)){
     # item to build out
@@ -101,6 +108,7 @@ expand_frictionless_metadata <- function(structural_metadata,
   }
 
 
+  ## prune the properties of items in the schema, does not remove fields
   if(prune_datapackage){
     my_data_schema <- prune_datapackage(my_data_schema,structural_metadata)
   }
@@ -120,7 +128,7 @@ expand_frictionless_metadata <- function(structural_metadata,
 }
 
 
-#' Prune data pacakge
+#' Prune field properties in a data package
 #'
 #' method to remove properties from the metadata for a dataset in a datapackage
 #'
@@ -152,3 +160,5 @@ prune_datapackage <- function(my_data_schema, structural_metadata){
 
   return(my_data_schema_pruned)
 }
+
+

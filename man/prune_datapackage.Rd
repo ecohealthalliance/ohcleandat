@@ -2,7 +2,7 @@
 % Please edit documentation in R/modify_frictionless_metadata.R
 \name{prune_datapackage}
 \alias{prune_datapackage}
-\title{Prune data pacakge}
+\title{Prune field properties in a data package}
 \usage{
 prune_datapackage(my_data_schema, structural_metadata)
 }
