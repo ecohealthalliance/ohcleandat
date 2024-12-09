@@ -45,7 +45,7 @@ data_codebook  <- create_structural_metadata(data)
 # update structural metadata
 write.csv(data_codebook,"my/codebook.csv", row.names = FALSE)
 
-data_codebook_updated <- read.csv(""my/codebook.csv"")
+data_codebook_updated <- read.csv("my/codebook.csv")
 
 # create frictionless package - this is done automatically with the
 # deposits package
